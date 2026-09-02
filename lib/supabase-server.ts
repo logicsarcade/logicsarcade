@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import type { Database } from "@/types/database";
 
 /**
@@ -6,7 +6,7 @@ import type { Database } from "@/types/database";
  * Use this in Server Components, Route Handlers, and Server Actions.
  * Uses the Service Role key so it bypasses RLS — keep it server-only.
  */
-export function createServerClient() {
+export function createServerClient(): SupabaseClient<Database, 'public'> {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
@@ -16,7 +16,9 @@ export function createServerClient() {
     );
   }
 
-  return createClient<Database>(url, key, {
+  return createClient<Database, 'public'>(url, key, {
     auth: { persistSession: false },
   });
 }
+
+

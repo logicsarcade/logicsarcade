@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import type { Database } from "@/types/database";
 
 /**
@@ -6,9 +6,9 @@ import type { Database } from "@/types/database";
  * Safe to use in Client Components — uses the anon key with RLS enforced.
  * Singleton pattern so only one instance exists per page.
  */
-let client: ReturnType<typeof createClient<Database>> | null = null;
+let client: SupabaseClient<Database, 'public'> | null = null;
 
-export function createBrowserClient() {
+export function createBrowserClient(): SupabaseClient<Database, 'public'> {
   if (client) return client;
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -20,6 +20,8 @@ export function createBrowserClient() {
     );
   }
 
-  client = createClient<Database>(url, anonKey);
+  client = createClient<Database, 'public'>(url, anonKey);
   return client;
 }
+
+
