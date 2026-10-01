@@ -1,7 +1,8 @@
 ﻿"use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import la from "../icons/logicsarcade_white.png";
+import la from "../icons/logicsarcade.png";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,7 +35,7 @@ export default function Navbar() {
         transition: "background 0.4s, backdrop-filter 0.4s, border-color 0.4s",
       }}
     >
-      <Link
+      {/* <Link
         href="/"
         style={{
           fontFamily: "'Space Grotesk',sans-serif",
@@ -53,17 +54,19 @@ export default function Navbar() {
           style={{ height: 40, marginRight: 12 }}
         />
         Logics<span style={{ color: "var(--cyan)" }}>Arcade</span>
-      </Link>
-
+      </Link> */}
+      <Logo />
       <ul
         style={{ display: "flex", gap: 40, listStyle: "none" }}
         className="hidden md:flex"
       >
         {[
+          { label: "Home", href: "/" },
           { label: "Services", href: "/#services" },
           { label: "Work", href: "/#work" },
           { label: "Process", href: "/#process" },
           { label: "Clients", href: "/#clients" },
+          { label: "Blogs", href: "/blog" },
         ].map(({ label, href }) => (
           <li key={label}>
             <Link
@@ -115,4 +118,3 @@ export default function Navbar() {
     </nav>
   );
 }
-

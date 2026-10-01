@@ -1,5 +1,7 @@
 "use client";
-import la from "../icons/logicsarcade_white.png";
+import Link from "next/link";
+import la from "../icons/logicsarcade.png";
+import Logo from "./Logo";
 
 const socialLinks = [
   {
@@ -46,27 +48,36 @@ export default function Footer() {
       }}
     >
       <div style={{ fontSize: 13, color: "var(--muted)" }}>
-        � {new Date().getFullYear()} LogicsArcade. All rights reserved.
+        &copy; {new Date().getFullYear()} LogicsArcade. All rights reserved.
       </div>
-
-      <div
-        style={{
-          fontFamily: "'Space Grotesk', sans-serif",
-          fontWeight: 700,
-          fontSize: 18,
-          display: "flex",
-          alignItems: "flex-end",
-        }}
-      >
-        <img
-          src={la.src}
-          alt="LogicsArcade Logo"
-          style={{ height: 40, marginRight: 12 }}
-        />
-        Logics<span style={{ color: "var(--cyan)" }}>Arcade</span>
-      </div>
-
+      <Logo />
       <div style={{ display: "flex", gap: 28 }}>
+        <Link
+          href="/terms"
+          style={{
+            fontSize: 13,
+            color: "var(--muted)",
+            textDecoration: "none",
+            transition: "color 0.2s",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+        >
+          Terms & Conditions
+        </Link>
+        <Link
+          href="/privacy"
+          style={{
+            fontSize: 13,
+            color: "var(--muted)",
+            textDecoration: "none",
+            transition: "color 0.2s",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+        >
+          Privacy Policy
+        </Link>
         {socialLinks.map((link) => (
           <a
             key={link.label}

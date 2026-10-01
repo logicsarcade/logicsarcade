@@ -5,6 +5,7 @@ import LogoutButton from "./LogoutButton";
 import Cursor from "@/components/Cursor";
 import ParticleCanvas from "@/components/ParticleCanvas";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 
 export const metadata = { title: "Admin — LogicsArcade Bookings" };
 
@@ -30,11 +31,23 @@ export default async function AdminPage() {
         backdropFilter: "blur(20px)",
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <Link href="/" style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 18, fontWeight: 700, color: "#fff", textDecoration: "none" }}>
+          {/* <Link href="/" style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 18, fontWeight: 700, color: "#fff", textDecoration: "none" }}>
             Logics<span style={{ color: "var(--cyan)" }}>Arcade</span>
-          </Link>
+          </Link> */}
+          <Logo />
           <span style={{ color: "rgba(255,255,255,0.15)", fontSize: 16 }}>|</span>
-          <span style={{ fontSize: 13, color: "#6b6b8a", fontWeight: 500 }}>Admin</span>
+          {/* <span style={{ fontSize: 13, color: "#6b6b8a", fontWeight: 500 }}>Admin</span> */}
+          <Link href="/" style={{ fontSize: 13, color: "#6b6b8a", textDecoration: "none" }}>
+            Home
+          </Link>
+          <Link href="/admin" style={{ fontSize: 13, color: "#6b6b8a", textDecoration: "none" }}>
+            Admin
+          </Link>
+          <Link href="/admin/blog" style={{ fontSize: 13, color: "#6b6b8a", textDecoration: "none" }}>
+            Blogs Manager
+          </Link>
+          <Link href="/blog" style={{ fontSize: 13, color: "#6b6b8a", textDecoration: "none" }}>View Blog</Link>
+
         </div>
 
         <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
@@ -52,12 +65,7 @@ export default async function AdminPage() {
               <span style={{ fontSize: 13, color: "#9090aa" }}>{user.email}</span>
             </div>
           )}
-          <Link href="/book" style={{ fontSize: 13, color: "#6b6b8a", textDecoration: "none" }}>
-            Booking Page
-          </Link>
-          <Link href="/" style={{ fontSize: 13, color: "#6b6b8a", textDecoration: "none" }}>
-            Home
-          </Link>
+
           <LogoutButton />
         </div>
       </nav>

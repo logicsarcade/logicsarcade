@@ -4,7 +4,8 @@ import LoginForm from "./LoginForm";
 import ParticleCanvas from "@/components/ParticleCanvas";
 import Cursor from "@/components/Cursor";
 import Link from "next/link";
-import la from "../../../icons/logicsarcade_white.png";
+import la from "../../../icons/logicsarcade.png";
+import Logo from "@/components/Logo";
 
 export const metadata = {
   title: "Admin Login — LogicsArcade",
@@ -67,7 +68,7 @@ export default async function LoginPage({
         <div style={{ width: "100%", maxWidth: 420 }}>
           {/* Logo */}
           <div style={{ textAlign: "center", marginBottom: 40 }}>
-            <Link
+            {/* <Link
               href="/"
               style={{
                 fontFamily: "'Space Grotesk',sans-serif",
@@ -75,15 +76,19 @@ export default async function LoginPage({
                 fontWeight: 700,
                 color: "#fff",
                 textDecoration: "none",
+                display: "flex",
+                alignItems: "flex-end",
+                justifyContent: "center",
               }}
             >
               <img
                 src={la.src}
-                alt="LogicsArcade Logo"
+                alt="LogicsArcade"
                 style={{ height: 40, marginRight: 12 }}
               />
               Logics<span style={{ color: "var(--cyan)" }}>Arcade</span>
-            </Link>
+            </Link> */}
+            <Logo />
             <div style={{ marginTop: 8, fontSize: 13, color: "#6b6b8a" }}>
               Admin Panel
             </div>
@@ -174,6 +179,3 @@ export default async function LoginPage({
     </>
   );
 }
-
-
-
