@@ -5,6 +5,9 @@ import Cursor from "@/components/Cursor";
 import ParticleCanvas from "@/components/ParticleCanvas";
 import BlogList from "./BlogList";
 
+// Fallback refresh every 5 min (instant refresh happens on every admin save)
+export const revalidate = 300;
+
 export const metadata = {
   title: "Blog — LogicsArcade",
   description: "Tech insights, tutorials, and industry news from the LogicsArcade team.",

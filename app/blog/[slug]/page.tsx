@@ -6,14 +6,41 @@ import Cursor from "@/components/Cursor";
 import ParticleCanvas from "@/components/ParticleCanvas";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
+
+// Fallback refresh every 5 min (instant refresh happens on every admin save)
+export const revalidate = 300;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const blog = await getBlogBySlug(slug);
   if (!blog) return { title: "Post Not Found — LogicsArcade" };
+  const url = `${SITE_URL}/blog/${blog.slug}`;
+  const image = blog.cover_image
+    ? (/^https?:\/\//.test(blog.cover_image) ? blog.cover_image : `${SITE_URL}${blog.cover_image}`)
+    : undefined;
   return {
     title: `${blog.title} — LogicsArcade Blog`,
     description: blog.excerpt,
+    alternates: { canonical: url },
+    keywords: blog.tags,
+    openGraph: {
+      type: "article",
+      url,
+      title: blog.title,
+      description: blog.excerpt,
+      siteName: "LogicsArcade",
+      publishedTime: blog.published_at ?? undefined,
+      authors: [blog.author_name],
+      tags: blog.tags,
+      ...(image ? { images: [image] } : {}),
+    },
+    twitter: {
+      card: image ? "summary_large_image" : "summary",
+      title: blog.title,
+      description: blog.excerpt,
+      ...(image ? { images: [image] } : {}),
+    },
   };
 }
 
@@ -30,6 +57,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: blog.title,
+          description: blog.excerpt,
+          image: blog.cover_image ? (/^https?:\/\//.test(blog.cover_image) ? blog.cover_image : `${SITE_URL}${blog.cover_image}`) : undefined,
+          datePublished: blog.published_at ?? blog.created_at,
+          author: { "@type": "Person", name: blog.author_name },
+          publisher: { "@type": "Organization", name: "LogicsArcade", url: SITE_URL },
+          mainEntityOfPage: `${SITE_URL}/blog/${blog.slug}`,
+        }).replace(/</g, "\\u003c") }}
+      />
       <Cursor />
       <ParticleCanvas />
       <Navbar />

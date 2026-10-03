@@ -1,5 +1,5 @@
 "use client";
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { createBlog, updateBlog } from "./actions";
 import type { Blog, BlogInsert } from "@/types/blog";
@@ -53,13 +53,51 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
   const set = (k: keyof BlogInsert, v: string | number | boolean | string[]) =>
     setForm(f => ({ ...f, [k]: v }));
 
-  function slugify(t: string) {
-    return t.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-").trim();
+  const [uploading, setUploading] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
+
+  // Image uploaded in this editor session but not saved with the blog yet
+  const pendingImage = useRef<string | null>(null);
+
+  function discardImage(url: string | null) {
+    if (!url) return;
+    fetch("/admin/api/upload", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url }),
+      keepalive: true,
+    }).catch(() => {});
+  }
+
+  function handleClose() {
+    discardImage(pendingImage.current);
+    pendingImage.current = null;
+    onClose();
+  }
+
+  async function uploadImage(file: File) {
+    setError("");
+    if (!file.type.startsWith("image/")) { setError("Please choose an image file."); return; }
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      const res = await fetch("/admin/api/upload", { method: "POST", body: fd });
+      const json = await res.json();
+      if (!res.ok || !json.url) setError(json.error || "Image upload failed.");
+      else {
+        discardImage(pendingImage.current); // replaced before saving
+        pendingImage.current = json.url;
+        set("cover_image", json.url);
+      }
+    } catch {
+      setError("Image upload failed.");
+    }
+    setUploading(false);
   }
 
   function handleTitleChange(val: string) {
     set("title", val);
-    if (!blog) set("slug", slugify(val)); // auto-slug only on create
   }
 
   function handleSave(publish: boolean) {
@@ -75,6 +113,8 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
         const res = await createBlog(payload);
         if (res.error) { setError(res.error); return; }
       }
+      if (pendingImage.current && pendingImage.current !== form.cover_image) discardImage(pendingImage.current);
+      pendingImage.current = null;
       onSaved();
       router.refresh();
     });
@@ -83,7 +123,7 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
   const isEdit = !!blog;
 
   return (
-    <div style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex", alignItems: "flex-start", justifyContent: "center", padding: "60px 20px 20px" }} onClick={onClose}>
+    <div style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex", alignItems: "flex-start", justifyContent: "center", padding: "60px 20px 20px" }} onClick={handleClose}>
       <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.8)", backdropFilter: "blur(6px)" }} />
 
       <div onClick={e => e.stopPropagation()} style={{
@@ -102,7 +142,7 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
               {isEdit ? blog.title : "Create Post"}
             </h2>
           </div>
-          <button onClick={onClose} style={{ background: "none", border: "none", color: "#6b6b8a", fontSize: 26, cursor: "pointer", lineHeight: 1 }}>×</button>
+          <button onClick={handleClose} style={{ background: "none", border: "none", color: "#6b6b8a", fontSize: 26, cursor: "pointer", lineHeight: 1 }}>×</button>
         </div>
 
         {/* Form grid */}
@@ -116,9 +156,9 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
 
           {/* Slug */}
           <div style={{ gridColumn: "span 2" }}>
-            <label style={lbl}>Slug (URL) *</label>
+            <label style={lbl}>Slug (URL) — optional, auto-generated from title if empty</label>
             <input value={form.slug} onChange={e => set("slug", e.target.value)} onFocus={foc} onBlur={blr}
-              placeholder="why-nextjs-15-changes-everything" style={{ ...inp, fontFamily: "monospace", fontSize: 13 }} />
+              placeholder="Leave empty to generate automatically" style={{ ...inp, fontFamily: "monospace", fontSize: 13 }} />
           </div>
 
           {/* Category */}
@@ -128,13 +168,6 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
               style={{ ...inp, cursor: "pointer" }}>
               {CATEGORIES.map(c => <option key={c} value={c} style={{ background: "#0a0a16" }}>{c}</option>)}
             </select>
-          </div>
-
-          {/* Read time */}
-          <div>
-            <label style={lbl}>Read Time (minutes)</label>
-            <input type="number" min={1} max={60} value={form.read_time} onChange={e => set("read_time", parseInt(e.target.value) || 5)}
-              onFocus={foc} onBlur={blr} style={inp} />
           </div>
 
           {/* Author */}
@@ -149,6 +182,24 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
             <label style={lbl}>Cover Image URL</label>
             <input value={form.cover_image ?? ""} onChange={e => set("cover_image", e.target.value)}
               onFocus={foc} onBlur={blr} placeholder="https://..." style={inp} />
+            <label
+              onDragOver={e => { e.preventDefault(); setDragOver(true); }}
+              onDragLeave={() => setDragOver(false)}
+              onDrop={e => { e.preventDefault(); setDragOver(false); const f = e.dataTransfer.files?.[0]; if (f) uploadImage(f); }}
+              style={{
+                display: "block", marginTop: 8, padding: "14px", textAlign: "center", cursor: "pointer",
+                border: `1px dashed ${dragOver ? "rgba(0,245,255,0.6)" : "rgba(255,255,255,0.2)"}`,
+                borderRadius: 10, fontSize: 12, color: "#9090aa",
+                background: dragOver ? "rgba(0,245,255,0.05)" : "transparent",
+              }}>
+              {uploading ? "Uploading…" : "Drag & drop an image here, or click to upload"}
+              <input type="file" accept="image/*" style={{ display: "none" }}
+                onChange={e => { const f = e.target.files?.[0]; if (f) uploadImage(f); e.target.value = ""; }} />
+            </label>
+            {form.cover_image && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={form.cover_image} alt="Cover preview" style={{ marginTop: 8, width: "100%", maxHeight: 120, objectFit: "cover", borderRadius: 8 }} />
+            )}
           </div>
 
           {/* Tags */}
@@ -189,7 +240,7 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
 
         {/* Actions */}
         <div style={{ display: "flex", gap: 12, justifyContent: "flex-end", paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          <button onClick={onClose} style={{ background: "none", border: "1px solid rgba(255,255,255,0.1)", color: "#9090aa", padding: "10px 24px", borderRadius: 10, fontSize: 14, cursor: "pointer" }}>
+          <button onClick={handleClose} style={{ background: "none", border: "1px solid rgba(255,255,255,0.1)", color: "#9090aa", padding: "10px 24px", borderRadius: 10, fontSize: 14, cursor: "pointer" }}>
             Cancel
           </button>
           <button onClick={() => handleSave(false)} disabled={isPending}

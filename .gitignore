@@ -5,3 +5,6 @@ node_modules
 package-lock.json
 
 .next
+
+# locally uploaded blog images (never push; keeps live images safe)
+uploads/
