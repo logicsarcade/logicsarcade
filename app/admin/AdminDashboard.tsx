@@ -327,7 +327,7 @@ function BookingModal({
           }}
         >
           <code style={{ fontSize: 11, color: "#333" }}>{booking.id}</code>
-          <div style={{ fontSize: 11, color: "#444" }}>
+          <div suppressHydrationWarning style={{ fontSize: 11, color: "#444" }}>
             Booked {new Date(booking.created_at).toLocaleString()}
           </div>
         </div>

@@ -6,7 +6,7 @@ import { deleteBlog, togglePublish } from "./actions";
 import BlogEditor from "./BlogEditor";
 
 function fmtDate(d: string) {
-  return new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  return new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 }
 
 export default function BlogManager({ blogs: initial }: { blogs: Blog[] }) {
