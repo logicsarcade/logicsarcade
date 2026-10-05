@@ -1,3 +1,4 @@
+import RealtimeSync from "@/components/RealtimeSync";
 import { getBlogBySlug, getPublishedBlogs } from "@/lib/blog-queries";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
@@ -71,6 +72,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           mainEntityOfPage: `${SITE_URL}/blog/${blog.slug}`,
         }).replace(/</g, "\\u003c") }}
       />
+      <RealtimeSync tables={["blogs"]} />
       <Cursor />
       <ParticleCanvas />
       <Navbar />

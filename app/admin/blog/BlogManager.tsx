@@ -12,6 +12,8 @@ function fmtDate(d: string) {
 export default function BlogManager({ blogs: initial }: { blogs: Blog[] }) {
   const router = useRouter();
   const [blogs, setBlogs] = useState(initial);
+  const [prevInitial, setPrevInitial] = useState(initial);
+  if (prevInitial !== initial) { setPrevInitial(initial); setBlogs(initial); } // live update from server
   const [editing, setEditing] = useState<Blog | null | "new">(null);
   const [isPending, startTransition] = useTransition();
   const [deletingId, setDeletingId] = useState<string | null>(null);

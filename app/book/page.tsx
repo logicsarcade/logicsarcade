@@ -1,3 +1,4 @@
+import RealtimeSync from "@/components/RealtimeSync";
 import { getBlockedDates } from "./actions";
 import BookingForm from "./BookingForm";
 import Navbar from "@/components/Navbar";
@@ -15,6 +16,7 @@ export default async function BookPage() {
 
   return (
     <>
+      <RealtimeSync tables={["blocked_dates"]} />
       <Cursor />
       <ParticleCanvas />
       <Navbar />

@@ -1,5 +1,6 @@
 // Server Component — fetches data then passes it down as props.
 // No "use client" here: this runs on the server at request time.
+import RealtimeSync from "@/components/RealtimeSync";
 import { getProjects, getTestimonials } from "@/lib/queries";
 
 import Cursor from "@/components/Cursor";
@@ -23,6 +24,7 @@ export default async function Home() {
 
   return (
     <>
+      <RealtimeSync tables={["projects", "testimonials"]} />
       <Cursor />
       <ParticleCanvas />
       <Navbar />

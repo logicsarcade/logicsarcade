@@ -1,5 +1,5 @@
 "use client";
-import { useState, useTransition, useCallback } from "react";
+import { useState, useTransition, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createBooking, getBookedSlots } from "./actions";
 import type { BookingInsert } from "@/types/database";
@@ -480,6 +480,16 @@ export default function BookingForm({
       setLoadingSlots(false);
     }
   }, []);
+
+  // Bookings are private, so taken time slots are re-checked every 15s while a date is chosen
+  useEffect(() => {
+    if (!form.preferred_date) return;
+    const date = form.preferred_date;
+    const id = setInterval(() => {
+      getBookedSlots(date).then(setBookedSlots).catch(() => {});
+    }, 15000);
+    return () => clearInterval(id);
+  }, [form.preferred_date]);
 
   function validateStep(s: number): string {
     if (s === 1) {

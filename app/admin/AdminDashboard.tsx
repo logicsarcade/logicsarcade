@@ -393,6 +393,8 @@ function Stats({ bookings }: { bookings: Booking[] }) {
 // ─── Blocked dates panel ──────────────────────────────────────
 function BlockedDatesPanel({ initial }: { initial: BlockedDate[] }) {
   const [list, setList] = useState<BlockedDate[]>(initial);
+  const [prevInitial, setPrevInitial] = useState(initial);
+  if (prevInitial !== initial) { setPrevInitial(initial); setList(initial); } // live update from server
   const [date, setDate] = useState("");
   const [reason, setReason] = useState("");
   const [isPending, startTransition] = useTransition();
@@ -565,6 +567,8 @@ export default function AdminDashboard({
   blockedDates: BlockedDate[];
 }) {
   const [bookings, setBookings] = useState<Booking[]>(initial);
+  const [prevInitial, setPrevInitial] = useState(initial);
+  if (prevInitial !== initial) { setPrevInitial(initial); setBookings(initial); } // live update from server
   const [selected, setSelected] = useState<Booking | null>(null);
   const [filter, setFilter] = useState<"all" | Booking["status"]>("all");
   const [search, setSearch] = useState("");

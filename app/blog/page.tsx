@@ -1,3 +1,4 @@
+import RealtimeSync from "@/components/RealtimeSync";
 import { getPublishedBlogs } from "@/lib/blog-queries";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -17,6 +18,7 @@ export default async function BlogPage() {
   const blogs = await getPublishedBlogs();
   return (
     <>
+      <RealtimeSync tables={["blogs"]} />
       <Cursor />
       <ParticleCanvas />
       <Navbar />

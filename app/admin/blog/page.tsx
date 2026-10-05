@@ -1,3 +1,4 @@
+import RealtimeSync from "@/components/RealtimeSync";
 import { getAllBlogsAdmin } from "@/lib/blog-queries";
 import BlogManager from "./BlogManager";
 import Cursor from "@/components/Cursor";
@@ -10,6 +11,7 @@ export default async function AdminBlogPage() {
 
   return (
     <>
+      <RealtimeSync tables={["blogs"]} authenticated />
       <Cursor />
       <ParticleCanvas />
 

@@ -1,3 +1,4 @@
+import RealtimeSync from "@/components/RealtimeSync";
 import { getAllBookings, getAllBlockedDates } from "@/app/book/actions";
 import AdminDashboard from "./AdminDashboard";
 import Cursor from "@/components/Cursor";
@@ -13,6 +14,7 @@ export default async function AdminPage() {
 
   return (
     <>
+      <RealtimeSync tables={["bookings", "blocked_dates"]} authenticated />
       <Cursor />
       <ParticleCanvas />
 

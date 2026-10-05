@@ -1,5 +1,6 @@
 "use server";
-import { createBrowserClient } from "@/lib/supabase-browser";
+import { createServerClient } from "@/lib/supabase-server";
+import { getSession } from "@/app/admin/actions";
 import type { BookingInsert, Booking } from "@/types/database";
 
 export type BookingFormState =
@@ -10,7 +11,7 @@ export type BookingFormState =
 export async function createBooking(
   formData: BookingInsert,
 ): Promise<BookingFormState> {
-  const supabase = createBrowserClient() as any;
+  const supabase = createServerClient() as any;
 
   if (!formData.full_name?.trim())
     return { status: "error", message: "Full name is required." };
@@ -66,7 +67,6 @@ export async function createBooking(
     status: "pending" as const,
     admin_notes: null,
   };
-  console.log("[createBooking] payload", payload);
   const { data, error } = await supabase
     .from("bookings")
     .insert(payload)
@@ -85,13 +85,13 @@ export async function createBooking(
 }
 
 export async function getBlockedDates(): Promise<string[]> {
-  const supabase = createBrowserClient() as any;
+  const supabase = createServerClient() as any;
   const { data } = await supabase.from("blocked_dates").select("blocked_date");
   return (data ?? []).map((d: { blocked_date: string }) => d.blocked_date);
 }
 
 export async function getBookedSlots(date: string): Promise<string[]> {
-  const supabase = createBrowserClient() as any;
+  const supabase = createServerClient() as any;
   const { data } = await supabase
     .from("bookings")
     .select("preferred_time")
@@ -101,7 +101,7 @@ export async function getBookedSlots(date: string): Promise<string[]> {
 }
 
 export async function getBookingById(id: string): Promise<Booking | null> {
-  const supabase = createBrowserClient() as any;
+  const supabase = createServerClient() as any;
   const { data } = await supabase
     .from("bookings")
     .select("*")
@@ -111,7 +111,8 @@ export async function getBookingById(id: string): Promise<Booking | null> {
 }
 
 export async function getAllBookings(): Promise<Booking[]> {
-  const supabase = createBrowserClient() as any;
+  if (!(await getSession())) return [];
+  const supabase = createServerClient() as any;
   const { data } = await supabase
     .from("bookings")
     .select("*")
@@ -125,7 +126,8 @@ export async function updateBookingStatus(
   status: Booking["status"],
   admin_notes?: string,
 ): Promise<{ error?: string }> {
-  const supabase = createBrowserClient() as any;
+  if (!(await getSession())) return { error: "Unauthorized" };
+  const supabase = createServerClient() as any;
   const update: Record<string, string> = { status };
   if (admin_notes !== undefined) update.admin_notes = admin_notes;
 
@@ -138,7 +140,8 @@ export async function addBlockedDate(
   date: string,
   reason: string,
 ): Promise<{ error?: string }> {
-  const supabase = createBrowserClient() as any;
+  if (!(await getSession())) return { error: "Unauthorized" };
+  const supabase = createServerClient() as any;
   const { error } = await supabase
     .from("blocked_dates")
     .insert({ blocked_date: date, reason });
@@ -149,14 +152,16 @@ export async function addBlockedDate(
 export async function removeBlockedDate(
   id: string,
 ): Promise<{ error?: string }> {
-  const supabase = createBrowserClient() as any;
+  if (!(await getSession())) return { error: "Unauthorized" };
+  const supabase = createServerClient() as any;
   const { error } = await supabase.from("blocked_dates").delete().eq("id", id);
   if (error) return { error: error.message };
   return {};
 }
 
 export async function getAllBlockedDates() {
-  const supabase = createBrowserClient() as any;
+  if (!(await getSession())) return [];
+  const supabase = createServerClient() as any;
   const { data } = await supabase
     .from("blocked_dates")
     .select("*")
