@@ -21,19 +21,14 @@ function BlogCard({ blog, featured }: { blog: Blog; featured?: boolean }) {
         }}
       >
         {/* Cover */}
-        <div style={{ position: "relative", width: "100%", aspectRatio: featured ? "16/6" : "16/8", background: "var(--navy)", overflow: "hidden" }}>
+        <div style={{ position: "relative", width: "100%", ...(blog.cover_image ? {} : { aspectRatio: featured ? "16/6" : "16/8" }), background: "var(--navy)", overflow: "hidden" }}>
           {blog.cover_image ? (
-            <img src={blog.cover_image} alt={blog.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src={blog.cover_image} alt={blog.title} style={{ width: "100%", display: "block" }} />
           ) : (
             <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,rgba(124,58,237,0.15),rgba(0,245,255,0.08))" }}>
               <span style={{ fontSize: featured ? 64 : 48, opacity: 0.4 }}>✍️</span>
             </div>
           )}
-          <div style={{ position: "absolute", top: 16, left: 16 }}>
-            <span style={{ background: "rgba(124,58,237,0.85)", backdropFilter: "blur(8px)", color: "#fff", borderRadius: 100, padding: "4px 12px", fontSize: 11, fontWeight: 600, letterSpacing: "0.5px" }}>
-              {blog.category}
-            </span>
-          </div>
         </div>
 
         {/* Body */}
@@ -48,6 +43,10 @@ function BlogCard({ blog, featured }: { blog: Blog; featured?: boolean }) {
 
           <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: featured ? 26 : 18, fontWeight: 700, color: "#fff", letterSpacing: "-0.5px", lineHeight: 1.25, marginBottom: 12 }}>
             {blog.title}
+            <span style={{ color: "var(--muted)", fontWeight: 400, margin: "0 8px" }}>-</span>
+            <span style={{ display: "inline-block", verticalAlign: "middle", background: "rgba(124,58,237,0.85)", color: "#fff", borderRadius: 100, padding: "4px 12px", fontSize: 11, fontWeight: 600, letterSpacing: "0.5px", fontFamily: "'Inter',sans-serif", lineHeight: 1.4 }}>
+              {blog.category}
+            </span>
           </h2>
 
           <p style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.65, marginBottom: 20, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
@@ -75,7 +74,9 @@ function BlogCard({ blog, featured }: { blog: Blog; featured?: boolean }) {
 }
 
 export default function BlogList({ blogs }: { blogs: Blog[] }) {
-  const [featured, ...rest] = blogs;
+  // Featured posts go on top in the large layout; the rest keep the incoming order (newest created first)
+  const featuredPosts = blogs.filter(b => b.is_featured);
+  const rest = blogs.filter(b => !b.is_featured);
 
   return (
     <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 40px" }}>
@@ -97,11 +98,11 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
         </div>
       )}
 
-      {featured && (
-        <div style={{ marginBottom: 32 }}>
-          <BlogCard blog={featured} featured />
+      {featuredPosts.map(f => (
+        <div key={f.id} style={{ marginBottom: 32 }}>
+          <BlogCard blog={f} featured />
         </div>
-      )}
+      ))}
 
       {rest.length > 0 && (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(320px,1fr))", gap: 24 }}>

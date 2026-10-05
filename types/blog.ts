@@ -11,6 +11,7 @@ export interface Blog {
   author_name: string;
   read_time: number;
   is_published: boolean;
+  is_featured: boolean;
   published_at: string | null;
 }
 

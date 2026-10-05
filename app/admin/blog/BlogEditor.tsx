@@ -47,6 +47,7 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
     author_name: blog?.author_name ?? "LogicsArcade Team",
     read_time: blog?.read_time ?? 5,
     is_published: blog?.is_published ?? false,
+    is_featured: blog?.is_featured ?? false,
     tags: blog?.tags ?? [],
   });
 
@@ -208,6 +209,14 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
             <input value={tagsInput} onChange={e => setTagsInput(e.target.value)}
               onFocus={foc} onBlur={blr} placeholder="Next.js, React, Performance" style={inp} />
           </div>
+
+          {/* Featured */}
+          <label style={{ gridColumn: "span 2", display: "flex", alignItems: "center", gap: 10, cursor: "pointer", fontSize: 14, color: "var(--text)" }}>
+            <input type="checkbox" checked={!!form.is_featured}
+              onChange={e => set("is_featured", e.target.checked)}
+              style={{ width: 16, height: 16, accentColor: "#7c3aed", cursor: "pointer" }} />
+            Featured — show at the top of the blog page in the large layout
+          </label>
         </div>
 
         {/* Excerpt */}

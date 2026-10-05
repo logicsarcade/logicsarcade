@@ -10,11 +10,21 @@ function getClient() {
 
 export async function getPublishedBlogs(): Promise<Blog[]> {
   const sb = getClient();
-  const { data, error } = await sb
+  // Featured first, then newest created first
+  let { data, error } = await sb
     .from("blogs")
     .select("*")
     .eq("is_published", true)
-    .order("published_at", { ascending: false });
+    .order("is_featured", { ascending: false })
+    .order("created_at", { ascending: false });
+  if (error) {
+    // is_featured column not added yet: fall back to newest created first
+    ({ data, error } = await sb
+      .from("blogs")
+      .select("*")
+      .eq("is_published", true)
+      .order("created_at", { ascending: false }));
+  }
   if (error) console.error("[getPublishedBlogs]", error.message);
   return data ?? [];
 }

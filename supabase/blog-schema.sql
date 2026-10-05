@@ -19,6 +19,7 @@ create table if not exists blogs (
   author_name   text        not null default 'LogicsArcade Team',
   read_time     int         not null default 5,
   is_published  boolean     not null default false,
+  is_featured   boolean     not null default false,
   published_at  timestamptz,
   sort_order    int         not null default 0
 );
