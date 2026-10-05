@@ -156,9 +156,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(200px,1fr))", gap: 16 }}>
                 {related.map(r => (
                   <Link key={r.id} href={`/blog/${r.slug}`} style={{ textDecoration: "none" }}>
-                    <div style={{ background: "var(--glass)", border: "1px solid var(--glass-border)", borderRadius: 14, padding: "18px 20px", transition: "all 0.2s" }}
-                      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(124,58,237,0.3)"; }}
-                      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--glass-border)"; }}>
+                    <div className="related-card" style={{ background: "var(--glass)", border: "1px solid var(--glass-border)", borderRadius: 14, padding: "18px 20px", transition: "all 0.2s" }}>
                       <div style={{ fontSize: 11, color: "#a78bfa", marginBottom: 8 }}>{r.category}</div>
                       <div style={{ fontSize: 14, fontWeight: 600, color: "#fff", lineHeight: 1.3, marginBottom: 8 }}>{r.title}</div>
                       <div style={{ fontSize: 11, color: "#6b6b8a" }}>{r.read_time} min read</div>
@@ -173,6 +171,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       {/* Blog content styles */}
       <style>{`
+        .related-card:hover{border-color:rgba(124,58,237,0.3) !important}
         .blog-content h1,.blog-content h2,.blog-content h3,.blog-content h4 {
           font-family:'Space Grotesk',sans-serif; color:#fff;
           letter-spacing:-0.5px; margin:2em 0 0.75em; line-height:1.2;
