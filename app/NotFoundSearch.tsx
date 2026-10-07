@@ -2,6 +2,7 @@
 import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { SERVICES } from "@/lib/services";
 
 export interface SearchBlog {
   title: string;
@@ -16,7 +17,8 @@ interface Entry { title: string; href: string; desc: string; keywords: string; k
 // Existing site routes / sections
 const PAGES: Entry[] = [
   { title: "Home", href: "/", kind: "Page", desc: "Back to the LogicsArcade homepage", keywords: "home main landing start logicsarcade software house" },
-  { title: "Services", href: "/#services", kind: "Section", desc: "What we build for you", keywords: "services web mobile app development mern next.js nextjs react native shopify saas ai integration software" },
+  { title: "Services", href: "/services", kind: "Page", desc: "What we build for you", keywords: "services what we do offerings solutions" },
+  ...SERVICES.map(sv => ({ title: sv.name, href: `/services/${sv.slug}`, kind: "Service", desc: sv.tagline, keywords: `${sv.tech.join(" ")} ${sv.name}` })),
   { title: "Our Work", href: "/#work", kind: "Section", desc: "Selected projects and case studies", keywords: "work projects portfolio case studies examples" },
   { title: "Process", href: "/#process", kind: "Section", desc: "How we take an idea to launch", keywords: "process how we work workflow steps method" },
   { title: "Clients", href: "/#clients", kind: "Section", desc: "What our clients say", keywords: "clients testimonials reviews feedback customers" },

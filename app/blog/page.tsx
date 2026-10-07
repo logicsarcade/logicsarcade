@@ -1,3 +1,5 @@
+import JsonLd from "@/components/JsonLd";
+import { blogListSchema, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 import RealtimeSync from "@/components/RealtimeSync";
 import { getPublishedBlogs } from "@/lib/blog-queries";
 import Navbar from "@/components/Navbar";
@@ -19,6 +21,7 @@ export default async function BlogPage() {
   return (
     <>
       <RealtimeSync tables={["blogs"]} />
+      <JsonLd data={[webPageSchema({ name: "Blog — LogicsArcade", description: "Tech insights, tutorials, and industry news from the LogicsArcade team.", path: "/blog", type: "CollectionPage" }), blogListSchema(blogs), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }])]} />
       <Cursor />
       <ParticleCanvas />
       <Navbar />

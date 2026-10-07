@@ -1,3 +1,5 @@
+import JsonLd from "@/components/JsonLd";
+import { webPageSchema, breadcrumbSchema } from "@/lib/schema";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
@@ -101,6 +103,7 @@ export default function PrivacyPage() {
 
   return (
     <>
+      <JsonLd data={[webPageSchema({ name: "Privacy Policy — LogicsArcade", description: "How LogicsArcade collects, uses, and protects your personal information.", path: "/privacy" }), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Privacy Policy", path: "/privacy" }])]} />
       <Cursor />
       <ParticleCanvas />
       <Navbar />

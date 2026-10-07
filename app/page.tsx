@@ -1,5 +1,7 @@
 // Server Component — fetches data then passes it down as props.
 // No "use client" here: this runs on the server at request time.
+import JsonLd from "@/components/JsonLd";
+import { webPageSchema, servicesListSchema } from "@/lib/schema";
 import RealtimeSync from "@/components/RealtimeSync";
 import { getProjects, getTestimonials } from "@/lib/queries";
 
@@ -25,6 +27,7 @@ export default async function Home() {
   return (
     <>
       <RealtimeSync tables={["projects", "testimonials"]} />
+      <JsonLd data={[webPageSchema({ name: "LogicsArcade — Scalable Web & Mobile Apps", description: "Web, mobile, Shopify, SaaS and AI development by LogicsArcade.", path: "/" }), servicesListSchema()]} />
       <Cursor />
       <ParticleCanvas />
       <Navbar />

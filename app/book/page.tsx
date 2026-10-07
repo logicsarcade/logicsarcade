@@ -1,3 +1,5 @@
+import JsonLd from "@/components/JsonLd";
+import { webPageSchema, breadcrumbSchema } from "@/lib/schema";
 import RealtimeSync from "@/components/RealtimeSync";
 import { getBlockedDates } from "./actions";
 import BookingForm from "./BookingForm";
@@ -17,6 +19,7 @@ export default async function BookPage() {
   return (
     <>
       <RealtimeSync tables={["blocked_dates"]} />
+      <JsonLd data={[webPageSchema({ name: "Book a Call — LogicsArcade", description: "Schedule a free 30-minute strategy call with the LogicsArcade team.", path: "/book", type: "ContactPage" }), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Book a Call", path: "/book" }])]} />
       <Cursor />
       <ParticleCanvas />
       <Navbar />

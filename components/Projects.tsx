@@ -2,6 +2,14 @@
 import { useReveal } from "./useReveal";
 import type { Project } from "@/types/database";
 
+// Live links for known projects (matched by name)
+function projectLink(name: string) {
+  const n = name.toLowerCase();
+  if (n.includes("minewords")) return "https://minewords.com/";
+  if (n.includes("arcade shipping calculator")) return "https://apps.shopify.com/shipping-cost-calculator";
+  return "#";
+}
+
 // ─── Mock screen rendered inside each project card ───────────
 function MockScreen({ accent }: { accent: string }) {
   const color = accent === "cyan" ? "0,245,255" : "124,58,237";
@@ -124,7 +132,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
     >
       <a
         key={project.id}
-        href={"#"} // project link
+        href={projectLink(project.name)}
         target="_blank"
         rel="noopener noreferrer"
         style={{ textDecoration: "none" }}

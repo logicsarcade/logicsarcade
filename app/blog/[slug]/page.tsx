@@ -8,6 +8,8 @@ import ParticleCanvas from "@/components/ParticleCanvas";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/site";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 
 // Fallback refresh every 5 min (instant refresh happens on every admin save)
 export const revalidate = 300;
@@ -73,6 +75,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         }).replace(/</g, "\\u003c") }}
       />
       <RealtimeSync tables={["blogs"]} />
+      <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }, { name: blog.title, path: `/blog/${blog.slug}` }])} />
       <Cursor />
       <ParticleCanvas />
       <Navbar />

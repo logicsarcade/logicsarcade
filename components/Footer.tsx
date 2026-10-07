@@ -34,32 +34,17 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer
-      style={{
-        borderTop: "1px solid var(--glass-border)",
-        padding: "40px 60px",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        position: "relative",
-        zIndex: 1,
-        flexWrap: "wrap",
-        gap: 16,
-      }}
-    >
-      <div style={{ fontSize: 13, color: "var(--muted)" }}>
+    <footer className="site-footer">
+      <div className="site-footer-left" style={{ fontSize: 13, color: "var(--muted)" }}>
         &copy; {new Date().getFullYear()} LogicsArcade. All rights reserved.
       </div>
-      <Logo />
-      <div style={{ display: "flex", gap: 28 }}>
+      <div className="site-footer-center">
+        <Logo />
+      </div>
+      <div className="site-footer-right">
         <Link
           href="/terms"
-          style={{
-            fontSize: 13,
-            color: "var(--muted)",
-            textDecoration: "none",
-            transition: "color 0.2s",
-          }}
+          style={{ fontSize: 13, color: "var(--muted)", textDecoration: "none", transition: "color 0.2s" }}
           onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
         >
@@ -67,12 +52,7 @@ export default function Footer() {
         </Link>
         <Link
           href="/privacy"
-          style={{
-            fontSize: 13,
-            color: "var(--muted)",
-            textDecoration: "none",
-            transition: "color 0.2s",
-          }}
+          style={{ fontSize: 13, color: "var(--muted)", textDecoration: "none", transition: "color 0.2s" }}
           onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
         >
@@ -84,12 +64,7 @@ export default function Footer() {
             href={link.link}
             target={link.target}
             rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
-            style={{
-              fontSize: 13,
-              color: "var(--muted)",
-              textDecoration: "none",
-              transition: "color 0.2s",
-            }}
+            style={{ fontSize: 13, color: "var(--muted)", textDecoration: "none", transition: "color 0.2s" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
           >

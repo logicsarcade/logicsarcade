@@ -1,3 +1,5 @@
+import JsonLd from "@/components/JsonLd";
+import { webPageSchema, breadcrumbSchema } from "@/lib/schema";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
@@ -126,6 +128,7 @@ export default function TermsPage() {
 
   return (
     <>
+      <JsonLd data={[webPageSchema({ name: "Terms of Service — LogicsArcade", description: "The terms for using LogicsArcade services.", path: "/terms" }), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Terms", path: "/terms" }])]} />
       <Cursor />
       <ParticleCanvas />
       <Navbar />

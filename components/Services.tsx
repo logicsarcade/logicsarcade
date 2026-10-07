@@ -1,14 +1,7 @@
 "use client";
+import Link from "next/link";
 import { useReveal } from "./useReveal";
-
-const SERVICES = [
-  { icon: "🌐", name: "Web Development", desc: "Full-stack applications built with modern frameworks. Performant, scalable, and production-ready from day one." },
-  { icon: "📱", name: "Mobile Apps", desc: "Cross-platform iOS & Android apps with React Native. Native performance with a single codebase." },
-  { icon: "🛍️", name: "Shopify Apps", desc: "Custom Shopify themes and private apps. Revenue-focused solutions built for Shopify's ecosystem." },
-  { icon: "⚡", name: "SaaS Development", desc: "Multi-tenant SaaS platforms with auth, billing, and dashboards — built to scale from 10 to 10,000 users." },
-  { icon: "🤖", name: "AI Integrations", desc: "GPT-4, Claude, and custom ML pipelines woven into your product. Intelligent features that users actually love." },
-  { icon: "🔒", name: "DevOps & Cloud", desc: "CI/CD pipelines, AWS/GCP deployments, and monitoring that keeps your product at 99.9% uptime." },
-];
+import { SERVICES } from "@/lib/services";
 
 export default function Services() {
   const headerRef = useReveal();
@@ -29,8 +22,17 @@ export default function Services() {
           background: "var(--glass-border)",
         }}>
           {SERVICES.map((s, i) => (
-            <ServiceCard key={s.name} {...s} delay={i % 3} />
+            <Link key={s.slug} href={`/services/${s.slug}`} style={{ display: "block", textDecoration: "none" }}>
+              <ServiceCard icon={s.icon} name={s.name} desc={s.desc} delay={i % 3} />
+            </Link>
           ))}
+          <Link href="/services" style={{ gridColumn: "span 2", display: "flex", textDecoration: "none", background: "var(--navy)" }}>
+            <div style={{ padding: "44px 40px", display: "flex", flexDirection: "column", justifyContent: "center", width: "100%" }}>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 20, fontWeight: 600, color: "#fff", marginBottom: 12, letterSpacing: "-0.3px" }}>Explore all services</div>
+              <div style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.65 }}>See what is included in each service, the tools we use, and how we work.</div>
+              <div style={{ marginTop: 24, fontSize: 13, color: "var(--cyan)", fontWeight: 500 }}>View all services →</div>
+            </div>
+          </Link>
         </div>
       </div>
     </section>
