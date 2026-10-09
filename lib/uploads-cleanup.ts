@@ -1,7 +1,8 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { createClient } from "@supabase/supabase-js";
-import { UPLOAD_DIR } from "@/lib/uploads";
+import { UPLOAD_DIRS } from "@/lib/uploads";
+import { removeImage, listImages } from "@/lib/image-storage";
 
 const GRACE_MS = 30 * 60 * 1000; // don't touch files uploaded in the last 30 min (editor may still be open)
 
@@ -23,7 +24,8 @@ export async function deleteImageIfUnused(url: string): Promise<boolean> {
   if (!m) return false;
   try {
     if ((await usedImages()).has(m[1])) return false;
-    await fs.unlink(path.join(UPLOAD_DIR, path.basename(m[1])));
+    await removeImage(m[1]);
+    for (const dir of UPLOAD_DIRS) await fs.unlink(path.join(dir, path.basename(m[1]))).catch(() => {});
     return true;
   } catch { return false; }
 }
@@ -31,14 +33,12 @@ export async function deleteImageIfUnused(url: string): Promise<boolean> {
 /** Delete every uploaded image that no blog uses (older than the grace period). */
 export async function cleanupOrphanImages(): Promise<void> {
   try {
-    const files = await fs.readdir(UPLOAD_DIR).catch(() => [] as string[]);
+    const files = await listImages();
     if (!files.length) return;
     const used = await usedImages(); // if this fails we delete nothing
     for (const f of files) {
-      if (used.has(f)) continue;
-      const p = path.join(UPLOAD_DIR, f);
-      const st = await fs.stat(p).catch(() => null);
-      if (st?.isFile() && Date.now() - st.mtimeMs > GRACE_MS) await fs.unlink(p).catch(() => {});
+      if (used.has(f.name)) continue;
+      if (Date.now() - f.createdAt > GRACE_MS) await removeImage(f.name).catch(() => {});
     }
   } catch { /* never break saving because of cleanup */ }
 }

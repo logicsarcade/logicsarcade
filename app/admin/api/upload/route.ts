@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { promises as fs } from "fs";
 import path from "path";
 import { getSession } from "@/app/admin/actions";
-import { UPLOAD_DIR, IMAGE_TYPES } from "@/lib/uploads";
+import { IMAGE_TYPES } from "@/lib/uploads";
+import { saveImage } from "@/lib/image-storage";
 import { cleanupOrphanImages, deleteImageIfUnused } from "@/lib/uploads-cleanup";
 
 export const runtime = "nodejs";
@@ -24,14 +24,12 @@ export async function POST(req: Request) {
     .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60) || "image";
 
   await cleanupOrphanImages();
-  await fs.mkdir(UPLOAD_DIR, { recursive: true });
-  let name = `${base}${ext}`;
-  let i = 1;
-  while (await fs.stat(path.join(UPLOAD_DIR, name)).then(() => true, () => false)) {
-    name = `${base}-${i++}${ext}`;
+  let name: string;
+  try {
+    name = await saveImage(base, ext, Buffer.from(await file.arrayBuffer()), IMAGE_TYPES[ext]);
+  } catch (e) {
+    return NextResponse.json({ error: `Upload failed: ${(e as Error).message}` }, { status: 500 });
   }
-
-  await fs.writeFile(path.join(UPLOAD_DIR, name), Buffer.from(await file.arrayBuffer()));
   return NextResponse.json({ url: `/images/${name}` });
 }
 
