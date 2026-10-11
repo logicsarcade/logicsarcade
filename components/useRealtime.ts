@@ -1,12 +1,14 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { createBrowserClient } from "@/lib/supabase-browser";
 import { getRealtimeToken } from "@/app/realtime-actions";
 
 /**
  * Calls onChange(table) whenever a row is inserted / updated / deleted
  * in any of the given Supabase tables (Supabase Realtime).
  * authenticated: true = listen with the admin session (needed for private tables like bookings).
+ *
+ * The Supabase client is loaded lazily, a few seconds after the page opens,
+ * so it never slows down the first load.
  */
 export function useRealtime(
   tables: string[],
@@ -18,17 +20,21 @@ export function useRealtime(
 
   const key = tables.join(",");
   useEffect(() => {
-    const sb = createBrowserClient();
     let cancelled = false;
     let timer: ReturnType<typeof setInterval> | undefined;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let sb: any;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let channel: any;
 
     async function applyToken() {
-      try { const t = await getRealtimeToken(); if (t) sb.realtime.setAuth(t); } catch { /* ignore */ }
+      try { const t = await getRealtimeToken(); if (t && sb) sb.realtime.setAuth(t); } catch { /* ignore */ }
     }
 
     async function start() {
+      const { createBrowserClient } = await import("@/lib/supabase-browser");
+      if (cancelled) return;
+      sb = createBrowserClient();
       if (authenticated) {
         await applyToken();
         timer = setInterval(applyToken, 45 * 60 * 1000); // keep the admin token fresh
@@ -44,12 +50,13 @@ export function useRealtime(
       });
       channel.subscribe();
     }
-    start();
+    const starter = setTimeout(start, 3000);
 
     return () => {
       cancelled = true;
+      clearTimeout(starter);
       if (timer) clearInterval(timer);
-      if (channel) sb.removeChannel(channel);
+      if (channel && sb) sb.removeChannel(channel);
     };
   }, [key, authenticated]);
 }

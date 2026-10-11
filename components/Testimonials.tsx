@@ -38,7 +38,7 @@ function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; del
           width: 44, height: 44, borderRadius: "50%",
           background: testimonial.avatar_grad,
           display: "flex", alignItems: "center", justifyContent: "center",
-          fontWeight: 700, fontSize: 16, fontFamily: "'Space Grotesk', sans-serif",
+          fontWeight: 700, fontSize: 16, fontFamily: "var(--font-sg), sans-serif",
           flexShrink: 0, color: "#fff",
         }}>
           {testimonial.initials}
@@ -65,7 +65,7 @@ export default function Testimonials({ testimonials }: { testimonials: Testimoni
           <div style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "var(--cyan)", marginBottom: 16, fontWeight: 500 }}>
             Client Feedback
           </div>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff" }}>
+          <h2 style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff" }}>
             Trusted by <span style={{ color: "#a78bfa" }}>founders</span>
           </h2>
         </div>

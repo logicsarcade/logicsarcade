@@ -38,7 +38,7 @@ export default function Navbar() {
       {/* <Link
         href="/"
         style={{
-          fontFamily: "'Space Grotesk',sans-serif",
+          fontFamily: "var(--font-sg),sans-serif",
           fontSize: 22,
           fontWeight: 700,
           letterSpacing: "-0.5px",
@@ -65,7 +65,7 @@ export default function Navbar() {
           { label: "Services", href: "/#services" },
           { label: "Work", href: "/#work" },
           { label: "Process", href: "/#process" },
-          { label: "Clients", href: "/#clients" },
+          // { label: "Clients", href: "/#clients" }, // hidden for now
           { label: "Blogs", href: "/blog" },
         ].map(({ label, href }) => (
           <li key={label}>

@@ -1,12 +1,13 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import la from "../icons/logicsarcade.png";
 const Logo = () => {
   return (
     <Link
       href="/"
       style={{
-        fontFamily: "'Space Grotesk',sans-serif",
+        fontFamily: "var(--font-sg),sans-serif",
         fontSize: 26,
         fontWeight: 700,
         color: "#fff",
@@ -16,11 +17,7 @@ const Logo = () => {
         justifyContent: "center",
       }}
     >
-      <img
-        src={la.src}
-        alt="LogicsArcade"
-        style={{ height: 40, marginRight: 12 }}
-      />
+      <Image src={la} alt="" width={40} height={40} priority style={{ height: 40, width: "auto", marginRight: 12 }} />
       Logics
       <span
         style={{

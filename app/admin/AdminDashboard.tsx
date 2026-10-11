@@ -169,7 +169,7 @@ function BookingModal({
             </div>
             <h2
               style={{
-                fontFamily: "'Space Grotesk',sans-serif",
+                fontFamily: "var(--font-sg),sans-serif",
                 fontSize: 22,
                 fontWeight: 700,
                 color: "#fff",
@@ -375,7 +375,7 @@ function Stats({ bookings }: { bookings: Booking[] }) {
             style={{
               fontSize: 28,
               fontWeight: 700,
-              fontFamily: "'Space Grotesk',sans-serif",
+              fontFamily: "var(--font-sg),sans-serif",
               color: s.color,
             }}
           >
@@ -453,7 +453,7 @@ function BlockedDatesPanel({ initial }: { initial: BlockedDate[] }) {
     >
       <h3
         style={{
-          fontFamily: "'Space Grotesk',sans-serif",
+          fontFamily: "var(--font-sg),sans-serif",
           fontSize: 16,
           fontWeight: 600,
           color: "#fff",
@@ -621,7 +621,7 @@ export default function AdminDashboard({
         </div>
         <h1
           style={{
-            fontFamily: "'Space Grotesk',sans-serif",
+            fontFamily: "var(--font-sg),sans-serif",
             fontSize: "clamp(28px,3vw,42px)",
             fontWeight: 700,
             letterSpacing: "-1px",

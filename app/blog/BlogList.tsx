@@ -41,10 +41,10 @@ function BlogCard({ blog, featured }: { blog: Blog; featured?: boolean }) {
             <span style={{ fontSize: 11, color: "#6b6b8a" }}>{blog.read_time} min read</span>
           </div>
 
-          <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: featured ? 26 : 18, fontWeight: 700, color: "#fff", letterSpacing: "-0.5px", lineHeight: 1.25, marginBottom: 12 }}>
+          <h2 style={{ fontFamily: "var(--font-sg),sans-serif", fontSize: featured ? 26 : 18, fontWeight: 700, color: "#fff", letterSpacing: "-0.5px", lineHeight: 1.25, marginBottom: 12 }}>
             {blog.title}
             <span style={{ color: "var(--muted)", fontWeight: 400, margin: "0 8px" }}>-</span>
-            <span style={{ display: "inline-block", verticalAlign: "middle", background: "rgba(124,58,237,0.85)", color: "#fff", borderRadius: 100, padding: "4px 12px", fontSize: 11, fontWeight: 600, letterSpacing: "0.5px", fontFamily: "'Inter',sans-serif", lineHeight: 1.4 }}>
+            <span style={{ display: "inline-block", verticalAlign: "middle", background: "rgba(124,58,237,0.85)", color: "#fff", borderRadius: 100, padding: "4px 12px", fontSize: 11, fontWeight: 600, letterSpacing: "0.5px", fontFamily: "var(--font-inter),sans-serif", lineHeight: 1.4 }}>
               {blog.category}
             </span>
           </h2>
@@ -83,7 +83,7 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
       {/* Header */}
       <div style={{ marginBottom: 56 }}>
         <div style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "var(--cyan)", marginBottom: 16, fontWeight: 500 }}>Our Blog</div>
-        <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,60px)", fontWeight: 700, letterSpacing: "-2px", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
+        <h1 style={{ fontFamily: "var(--font-sg),sans-serif", fontSize: "clamp(36px,5vw,60px)", fontWeight: 700, letterSpacing: "-2px", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
           Tech Insights &<br /><span style={{ color: "#a78bfa" }}>Industry News</span>
         </h1>
         <p style={{ fontSize: 16, color: "var(--muted)", maxWidth: 540, lineHeight: 1.65 }}>

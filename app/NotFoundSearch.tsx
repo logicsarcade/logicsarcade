@@ -21,7 +21,7 @@ const PAGES: Entry[] = [
   ...SERVICES.map(sv => ({ title: sv.name, href: `/services/${sv.slug}`, kind: "Service", desc: sv.tagline, keywords: `${sv.tech.join(" ")} ${sv.name}` })),
   { title: "Our Work", href: "/#work", kind: "Section", desc: "Selected projects and case studies", keywords: "work projects portfolio case studies examples" },
   { title: "Process", href: "/#process", kind: "Section", desc: "How we take an idea to launch", keywords: "process how we work workflow steps method" },
-  { title: "Clients", href: "/#clients", kind: "Section", desc: "What our clients say", keywords: "clients testimonials reviews feedback customers" },
+  // { title: "Clients", href: "/#clients", kind: "Section", desc: "What our clients say", keywords: "clients testimonials reviews feedback customers" }, // hidden for now
   { title: "Tech Stack", href: "/#stack", kind: "Section", desc: "Technologies we use", keywords: "tech stack technologies tools frameworks react node mongodb" },
   { title: "Contact", href: "/#contact", kind: "Section", desc: "Start a conversation with us", keywords: "contact reach touch email hire" },
   { title: "Blog", href: "/blog", kind: "Page", desc: "Tech insights, tutorials and news", keywords: "blog blogs articles posts news tutorials insights" },
@@ -108,7 +108,7 @@ export default function NotFoundSearch({ blogs }: { blogs: SearchBlog[] }) {
       `}</style>
 
       <div className="nf-404" style={{
-        fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+        fontFamily: "var(--font-sg), sans-serif", fontWeight: 700,
         fontSize: "clamp(96px, 22vw, 190px)", lineHeight: 1, letterSpacing: "-6px",
         background: "linear-gradient(135deg, var(--cyan) 0%, var(--violet) 100%)",
         WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent",
@@ -116,7 +116,7 @@ export default function NotFoundSearch({ blogs }: { blogs: SearchBlog[] }) {
       }}>404</div>
 
       <h1 style={{
-        fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(28px, 4.5vw, 44px)",
+        fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(28px, 4.5vw, 44px)",
         fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff", marginTop: 8,
       }}>Looking for something?</h1>
 

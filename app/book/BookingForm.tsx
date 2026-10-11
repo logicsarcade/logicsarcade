@@ -61,7 +61,7 @@ const S = {
     fontSize: 15,
     outline: "none",
     transition: "border-color 0.2s",
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-inter), sans-serif",
   } as React.CSSProperties,
   label: {
     display: "block",
@@ -161,7 +161,7 @@ function Calendar({
         </button>
         <span
           style={{
-            fontFamily: "'Space Grotesk', sans-serif",
+            fontFamily: "var(--font-sg), sans-serif",
             fontWeight: 600,
             color: "#fff",
             fontSize: 15,
@@ -570,7 +570,7 @@ export default function BookingForm({
         <div>
           <h2
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "var(--font-sg), sans-serif",
               fontSize: 28,
               fontWeight: 700,
               color: "#fff",
@@ -645,7 +645,7 @@ export default function BookingForm({
         <div>
           <h2
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "var(--font-sg), sans-serif",
               fontSize: 28,
               fontWeight: 700,
               color: "#fff",
@@ -747,7 +747,7 @@ export default function BookingForm({
         <div>
           <h2
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "var(--font-sg), sans-serif",
               fontSize: 28,
               fontWeight: 700,
               color: "#fff",

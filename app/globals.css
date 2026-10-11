@@ -9,7 +9,7 @@
   --glass: rgba(255,255,255,0.04);
   --glass-border: rgba(255,255,255,0.08);
   --text: #e8e8f0;
-  --muted: #6b6b8a;
+  --muted: #8e8eac;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -17,7 +17,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--black);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), sans-serif;
   overflow-x: hidden;
   cursor: none;
 }

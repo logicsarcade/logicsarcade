@@ -54,7 +54,7 @@ export default function CTA() {
         </div>
         <h2
           style={{
-            fontFamily: "'Space Grotesk', sans-serif",
+            fontFamily: "var(--font-sg), sans-serif",
             fontSize: "clamp(40px,5vw,72px)",
             fontWeight: 700,
             letterSpacing: "-2px",

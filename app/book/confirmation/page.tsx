@@ -39,7 +39,7 @@ export default async function ConfirmationPage({
         <main style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", zIndex: 1 }}>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: 64, marginBottom: 24 }}>??</div>
-            <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 32, color: "#fff", marginBottom: 16 }}>Booking not found</h1>
+            <h1 style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: 32, color: "#fff", marginBottom: 16 }}>Booking not found</h1>
             <Link href="/book" style={{ color: "var(--cyan)", textDecoration: "none" }}>? Book a call</Link>
           </div>
         </main>
@@ -83,7 +83,7 @@ export default async function ConfirmationPage({
             Booking Confirmed
           </div>
           <h1 style={{
-            fontFamily: "'Space Grotesk', sans-serif",
+            fontFamily: "var(--font-sg), sans-serif",
             fontSize: "clamp(32px,4vw,52px)",
             fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1,
             color: "#fff", marginBottom: 16,

@@ -3,7 +3,7 @@
 import JsonLd from "@/components/JsonLd";
 import { webPageSchema, servicesListSchema } from "@/lib/schema";
 import RealtimeSync from "@/components/RealtimeSync";
-import { getProjects, getTestimonials } from "@/lib/queries";
+import { getProjects } from "@/lib/queries"; // getTestimonials hidden for now
 
 import Cursor from "@/components/Cursor";
 import ParticleCanvas from "@/components/ParticleCanvas";
@@ -12,21 +12,19 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Projects from "@/components/Projects";
 import Process from "@/components/Process";
-import Testimonials from "@/components/Testimonials";
+// import Testimonials from "@/components/Testimonials"; // hidden for now
 import TechStack from "@/components/TechStack";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export default async function Home() {
   // Runs on the server — both fetches happen in parallel
-  const [projects, testimonials] = await Promise.all([
-    getProjects(),
-    getTestimonials(),
-  ]);
+  const projects = await getProjects();
+  // const testimonials = await getTestimonials(); // hidden for now
 
   return (
     <>
-      <RealtimeSync tables={["projects", "testimonials"]} />
+      <RealtimeSync tables={["projects"]} />
       <JsonLd data={[webPageSchema({ name: "LogicsArcade — Scalable Web & Mobile Apps", description: "Web, mobile, Shopify, SaaS and AI development by LogicsArcade.", path: "/" }), servicesListSchema()]} />
       <Cursor />
       <ParticleCanvas />
@@ -36,7 +34,7 @@ export default async function Home() {
         <Services />
         <Projects projects={projects} />
         <Process />
-        <Testimonials testimonials={testimonials} />
+        {/* <Testimonials testimonials={testimonials} /> — hidden for now */}
         <TechStack />
         <CTA />
       </main>

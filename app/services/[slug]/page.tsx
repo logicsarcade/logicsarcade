@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 const label = { fontSize: 11, letterSpacing: 3, textTransform: "uppercase" as const, color: "var(--cyan)", marginBottom: 14, fontWeight: 500 };
-const h2 = { fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(26px,3vw,38px)", fontWeight: 700, letterSpacing: "-1px", color: "#fff", marginBottom: 28 } as const;
+const h2 = { fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(26px,3vw,38px)", fontWeight: 700, letterSpacing: "-1px", color: "#fff", marginBottom: 28 } as const;
 
 export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -79,7 +79,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
             width: 64, height: 64, background: "rgba(0,245,255,0.06)", border: "1px solid rgba(0,245,255,0.12)",
             borderRadius: 18, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24, fontSize: 28,
           }}>{s.icon}</div>
-          <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(34px,5vw,58px)", fontWeight: 700, letterSpacing: "-2px", lineHeight: 1.08, color: "#fff", maxWidth: 800 }}>{s.name}</h1>
+          <h1 style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(34px,5vw,58px)", fontWeight: 700, letterSpacing: "-2px", lineHeight: 1.08, color: "#fff", maxWidth: 800 }}>{s.name}</h1>
           <p style={{ color: "var(--muted)", fontSize: 18, lineHeight: 1.7, maxWidth: 640, marginTop: 18 }}>{s.tagline}</p>
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 32 }}>
             <Link href="/book" className="svc-btn svc-btn-primary">Book a Free Call →</Link>
@@ -102,7 +102,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 20 }}>
               {s.features.map(f => (
                 <div key={f.title} style={{ background: "var(--glass)", border: "1px solid var(--glass-border)", borderRadius: 20, padding: "26px 24px" }}>
-                  <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 17, fontWeight: 600, color: "#fff", marginBottom: 8 }}>{f.title}</div>
+                  <div style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: 17, fontWeight: 600, color: "#fff", marginBottom: 8 }}>{f.title}</div>
                   <div style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.65 }}>{f.desc}</div>
                 </div>
               ))}
@@ -138,8 +138,8 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 20 }}>
               {PROCESS.map((p, i) => (
                 <div key={p.title} style={{ background: "var(--glass)", border: "1px solid var(--glass-border)", borderRadius: 20, padding: "26px 24px" }}>
-                  <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, color: "var(--cyan)", marginBottom: 10 }}>0{i + 1}</div>
-                  <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 17, fontWeight: 600, color: "#fff", marginBottom: 8 }}>{p.title}</div>
+                  <div style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: 14, color: "var(--cyan)", marginBottom: 10 }}>0{i + 1}</div>
+                  <div style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: 17, fontWeight: 600, color: "#fff", marginBottom: 8 }}>{p.title}</div>
                   <div style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.65 }}>{p.desc}</div>
                 </div>
               ))}
@@ -166,7 +166,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
             background: "linear-gradient(135deg, rgba(124,58,237,0.14), rgba(0,245,255,0.04))",
             border: "1px solid var(--glass-border)",
           }}>
-            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(26px,3.2vw,40px)", fontWeight: 700, letterSpacing: "-1px", color: "#fff" }}>Ready to talk about {s.name}?</h2>
+            <h2 style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(26px,3.2vw,40px)", fontWeight: 700, letterSpacing: "-1px", color: "#fff" }}>Ready to talk about {s.name}?</h2>
             <p style={{ color: "var(--muted)", fontSize: 16, margin: "14px auto 28px", maxWidth: 480, lineHeight: 1.7 }}>
               Book a free strategy call and tell us about your project.
             </p>

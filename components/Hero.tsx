@@ -34,7 +34,7 @@ export default function Hero() {
         </div>
 
         <h1 style={{
-          fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(42px, 5.5vw, 72px)",
+          fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(42px, 5.5vw, 72px)",
           fontWeight: 700, lineHeight: 1.05, letterSpacing: "-2px",
           marginBottom: 24, color: "#fff",
         }}>

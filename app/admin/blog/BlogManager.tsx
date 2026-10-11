@@ -49,7 +49,7 @@ export default function BlogManager({ blogs: initial }: { blogs: Blog[] }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 36 }}>
         <div>
           <div style={{ fontSize: 11, letterSpacing: 3, color: "var(--cyan)", textTransform: "uppercase", marginBottom: 10 }}>Content</div>
-          <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,3vw,38px)", fontWeight: 700, letterSpacing: "-1px", color: "#fff" }}>
+          <h1 style={{ fontFamily: "var(--font-sg),sans-serif", fontSize: "clamp(26px,3vw,38px)", fontWeight: 700, letterSpacing: "-1px", color: "#fff" }}>
             Blog Manager
           </h1>
         </div>
@@ -63,7 +63,7 @@ export default function BlogManager({ blogs: initial }: { blogs: Blog[] }) {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, marginBottom: 36 }}>
         {[{ label: "Total Posts", value: blogs.length, color: "#fff" }, { label: "Published", value: published, color: "#4ade80" }, { label: "Drafts", value: drafts, color: "#fbbf24" }].map(s => (
           <div key={s.label} style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 14, padding: "20px 24px" }}>
-            <div style={{ fontSize: 28, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", color: s.color }}>{s.value}</div>
+            <div style={{ fontSize: 28, fontWeight: 700, fontFamily: "var(--font-sg),sans-serif", color: s.color }}>{s.value}</div>
             <div style={{ fontSize: 12, color: "#6b6b8a", marginTop: 4 }}>{s.label}</div>
           </div>
         ))}

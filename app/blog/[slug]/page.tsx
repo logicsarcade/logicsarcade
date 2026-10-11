@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
 
           {/* Title */}
-          <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff", marginBottom: 20 }}>
+          <h1 style={{ fontFamily: "var(--font-sg),sans-serif", fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff", marginBottom: 20 }}>
             {blog.title}
           </h1>
 
@@ -153,7 +153,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {/* Related posts */}
           {related.length > 0 && (
             <div style={{ marginTop: 60 }}>
-              <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 24 }}>
+              <h3 style={{ fontFamily: "var(--font-sg),sans-serif", fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 24 }}>
                 Related Posts
               </h3>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(200px,1fr))", gap: 16 }}>
@@ -176,7 +176,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <style>{`
         .related-card:hover{border-color:rgba(124,58,237,0.3) !important}
         .blog-content h1,.blog-content h2,.blog-content h3,.blog-content h4 {
-          font-family:'Space Grotesk',sans-serif; color:#fff;
+          font-family:var(--font-sg),sans-serif; color:#fff;
           letter-spacing:-0.5px; margin:2em 0 0.75em; line-height:1.2;
         }
         .blog-content h1{font-size:2rem} .blog-content h2{font-size:1.6rem}

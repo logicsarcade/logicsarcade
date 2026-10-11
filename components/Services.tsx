@@ -11,7 +11,7 @@ export default function Services() {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 60px" }}>
         <div ref={headerRef} className="reveal" style={{ marginBottom: 64 }}>
           <div style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "var(--cyan)", marginBottom: 16, fontWeight: 500 }}>What We Build</div>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff" }}>
+          <h2 style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff" }}>
             Full-stack <span style={{ color: "#a78bfa" }}>expertise</span>,<br />zero guesswork
           </h2>
         </div>
@@ -28,7 +28,7 @@ export default function Services() {
           ))}
           <Link href="/services" style={{ gridColumn: "span 2", display: "flex", textDecoration: "none", background: "var(--navy)" }}>
             <div style={{ padding: "44px 40px", display: "flex", flexDirection: "column", justifyContent: "center", width: "100%" }}>
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 20, fontWeight: 600, color: "#fff", marginBottom: 12, letterSpacing: "-0.3px" }}>Explore all services</div>
+              <div style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: 20, fontWeight: 600, color: "#fff", marginBottom: 12, letterSpacing: "-0.3px" }}>Explore all services</div>
               <div style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.65 }}>See what is included in each service, the tools we use, and how we work.</div>
               <div style={{ marginTop: 24, fontSize: 13, color: "var(--cyan)", fontWeight: 500 }}>View all services →</div>
             </div>
@@ -67,7 +67,7 @@ function ServiceCard({ icon, name, desc, delay }: { icon: string; name: string; 
         display: "flex", alignItems: "center", justifyContent: "center",
         marginBottom: 28, fontSize: 22,
       }}>{icon}</div>
-      <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 20, fontWeight: 600, color: "#fff", marginBottom: 12, letterSpacing: "-0.3px" }}>{name}</div>
+      <div style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: 20, fontWeight: 600, color: "#fff", marginBottom: 12, letterSpacing: "-0.3px" }}>{name}</div>
       <div style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.65 }}>{desc}</div>
       <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 24, fontSize: 13, color: "var(--cyan)", fontWeight: 500 }}>
         Learn more →

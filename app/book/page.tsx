@@ -120,7 +120,7 @@ export default async function BookPage() {
                 </div>
                 <h1
                   style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontFamily: "var(--font-sg), sans-serif",
                     fontSize: "clamp(36px,5vw,60px)",
                     fontWeight: 700,
                     letterSpacing: "-2px",

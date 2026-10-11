@@ -35,9 +35,10 @@ export default function ParticleCanvas() {
         color: Math.random() > 0.6 ? "0,245,255" : "124,58,237",
       };
     }
-    for (let i = 0; i < 80; i++) particles.push(makeParticle());
+    const count = window.innerWidth < 768 ? 40 : 80;
+    for (let i = 0; i < count; i++) particles.push(makeParticle());
 
-    let raf: number;
+    let raf = 0;
     function draw() {
       ctx.clearRect(0, 0, W, H);
       particles.forEach((p) => {
@@ -65,10 +66,19 @@ export default function ParticleCanvas() {
           }
         }
       }
-      raf = requestAnimationFrame(draw);
+      if (!document.hidden) raf = requestAnimationFrame(draw);
     }
-    draw();
-    return () => { window.removeEventListener("resize", resize); cancelAnimationFrame(raf); };
+    const onVisible = () => { if (!document.hidden) { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); } };
+    document.addEventListener("visibilitychange", onVisible);
+    // Start after the page has loaded, so the animation never blocks the first render
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const starter = setTimeout(() => { if (!reduce) draw(); }, 1500);
+    return () => {
+      clearTimeout(starter);
+      window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", onVisible);
+      cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (

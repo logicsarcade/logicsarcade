@@ -14,7 +14,7 @@ const inp: React.CSSProperties = {
   width: "100%", background: "rgba(255,255,255,0.04)",
   border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10,
   padding: "12px 14px", color: "#fff", fontSize: 14,
-  fontFamily: "'Inter',sans-serif", outline: "none", transition: "border-color 0.2s",
+  fontFamily: "var(--font-inter),sans-serif", outline: "none", transition: "border-color 0.2s",
 };
 const lbl: React.CSSProperties = {
   display: "block", fontSize: 12, fontWeight: 500,
@@ -139,7 +139,7 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
             <div style={{ fontSize: 11, letterSpacing: 2, color: "var(--cyan)", textTransform: "uppercase", marginBottom: 6 }}>
               {isEdit ? "Edit Blog Post" : "New Blog Post"}
             </div>
-            <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 22, fontWeight: 700, color: "#fff" }}>
+            <h2 style={{ fontFamily: "var(--font-sg),sans-serif", fontSize: 22, fontWeight: 700, color: "#fff" }}>
               {isEdit ? blog.title : "Create Post"}
             </h2>
           </div>

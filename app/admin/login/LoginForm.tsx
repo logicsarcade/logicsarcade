@@ -28,7 +28,7 @@ export default function LoginForm({ redirectTo }: { redirectTo: string }) {
     color: "#fff",
     fontSize: 15,
     outline: "none",
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-inter), sans-serif",
     transition: "border-color 0.2s",
   };
 

@@ -71,7 +71,7 @@ export default async function LoginPage({
             {/* <Link
               href="/"
               style={{
-                fontFamily: "'Space Grotesk',sans-serif",
+                fontFamily: "var(--font-sg),sans-serif",
                 fontSize: 26,
                 fontWeight: 700,
                 color: "#fff",
@@ -124,7 +124,7 @@ export default async function LoginPage({
 
             <h1
               style={{
-                fontFamily: "'Space Grotesk',sans-serif",
+                fontFamily: "var(--font-sg),sans-serif",
                 fontSize: 24,
                 fontWeight: 700,
                 color: "#fff",

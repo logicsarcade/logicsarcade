@@ -18,7 +18,7 @@ export default function Process() {
           <div style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "var(--cyan)", marginBottom: 16, fontWeight: 500 }}>
             How We Work
           </div>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff" }}>
+          <h2 style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff" }}>
             From idea to <span style={{ color: "#a78bfa" }}>launch</span>
           </h2>
         </div>
@@ -56,13 +56,13 @@ function Step({ num, title, desc, delay }: { num: string; title: string; desc: s
         width: 72, height: 72, background: "var(--navy)",
         border: "1px solid var(--glass-border)", borderRadius: "50%",
         display: "flex", alignItems: "center", justifyContent: "center",
-        margin: "0 auto 28px", fontFamily: "'Space Grotesk', sans-serif",
+        margin: "0 auto 28px", fontFamily: "var(--font-sg), sans-serif",
         fontSize: 22, fontWeight: 700, position: "relative", zIndex: 1,
         transition: "border-color 0.3s, background 0.3s, color 0.3s",
       }}>
         {num}
       </div>
-      <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 18, fontWeight: 600, color: "#fff", marginBottom: 12, letterSpacing: "-0.3px" }}>{title}</div>
+      <div style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: 18, fontWeight: 600, color: "#fff", marginBottom: 12, letterSpacing: "-0.3px" }}>{title}</div>
       <div style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.65 }}>{desc}</div>
     </div>
   );

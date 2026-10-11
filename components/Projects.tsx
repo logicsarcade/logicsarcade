@@ -184,7 +184,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
           </div>
           <div
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "var(--font-sg), sans-serif",
               fontSize: 22,
               fontWeight: 700,
               color: "#fff",
@@ -244,7 +244,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
                   fontSize: 18,
                   fontWeight: 700,
                   color: "#4ade80",
-                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontFamily: "var(--font-sg), sans-serif",
                 }}
               >
                 {project.result}
@@ -285,7 +285,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
           </div>
           <h2
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "var(--font-sg), sans-serif",
               fontSize: "clamp(32px,3.5vw,52px)",
               fontWeight: 700,
               letterSpacing: "-1.5px",

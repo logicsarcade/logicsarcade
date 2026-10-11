@@ -124,7 +124,7 @@ export default function PrivacyPage() {
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(0,245,255,0.05)", border: "1px solid rgba(0,245,255,0.15)", borderRadius: 100, padding: "6px 16px", fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: "var(--cyan)", marginBottom: 24 }}>
               Legal
             </div>
-            <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(32px,5vw,52px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff", marginBottom: 16 }}>
+            <h1 style={{ fontFamily: "var(--font-sg),sans-serif", fontSize: "clamp(32px,5vw,52px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff", marginBottom: 16 }}>
               Privacy Policy
             </h1>
             <p style={{ fontSize: 15, color: "var(--muted)", lineHeight: 1.6 }}>
@@ -137,7 +137,7 @@ export default function PrivacyPage() {
           <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
             {sections.map((section, i) => (
               <div key={i} style={{ paddingTop: 36, paddingBottom: 36, borderBottom: i < sections.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
-                <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 20, fontWeight: 700, color: "#fff", letterSpacing: "-0.3px", marginBottom: 16 }}>
+                <h2 style={{ fontFamily: "var(--font-sg),sans-serif", fontSize: 20, fontWeight: 700, color: "#fff", letterSpacing: "-0.3px", marginBottom: 16 }}>
                   {section.title}
                 </h2>
                 <div
