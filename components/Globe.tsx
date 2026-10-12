@@ -4,12 +4,17 @@ import { useEffect, useRef } from "react";
 export default function Globe() {
   const dot1Ref = useRef<SVGCircleElement>(null);
   const dot2Ref = useRef<SVGCircleElement>(null);
+  const halo1Ref = useRef<SVGCircleElement>(null);
+  const halo2Ref = useRef<SVGCircleElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const angle = useRef({ a1: 0, a2: Math.PI });
 
   useEffect(() => {
-    let raf: number;
+    // The globe is hidden below the lg breakpoint, so don't animate it there
+    if (window.innerWidth < 1024) return;
+    let raf = 0;
     function orbit() {
+      if (document.hidden) { raf = requestAnimationFrame(orbit); return; }
       angle.current.a1 += 0.008;
       angle.current.a2 += 0.006;
       const cx = 250, cy = 250, rx = 230, ry = 60;
@@ -23,6 +28,11 @@ export default function Globe() {
         const s = 0.6 + (y1 - (cy - ry)) / (2 * ry) * 0.8;
         dot1Ref.current.setAttribute("r", String(3 * s));
         dot1Ref.current.setAttribute("opacity", String(0.3 + s * 0.7));
+        if (halo1Ref.current) {
+          halo1Ref.current.setAttribute("cx", String(x1));
+          halo1Ref.current.setAttribute("cy", String(y1));
+          halo1Ref.current.setAttribute("r", String(3 * s * 2.6));
+        }
       }
       if (dot2Ref.current) {
         dot2Ref.current.setAttribute("cx", String(x2));
@@ -30,6 +40,11 @@ export default function Globe() {
         const s = 0.4 + (y2 - (cy - ry)) / (2 * ry) * 0.6;
         dot2Ref.current.setAttribute("r", String(2.5 * s));
         dot2Ref.current.setAttribute("opacity", String(0.2 + s * 0.6));
+        if (halo2Ref.current) {
+          halo2Ref.current.setAttribute("cx", String(x2));
+          halo2Ref.current.setAttribute("cy", String(y2));
+          halo2Ref.current.setAttribute("r", String(2.5 * s * 2.6));
+        }
       }
       raf = requestAnimationFrame(orbit);
     }
@@ -58,8 +73,12 @@ export default function Globe() {
       className="hidden lg:block"
     >
       <div className="globe-float" style={{ width: "100%", height: "100%", position: "relative" }}>
+        <div style={{
+          position: "absolute", inset: "-22%", pointerEvents: "none",
+          background: "radial-gradient(circle, rgba(124,58,237,0.13) 0%, rgba(0,245,255,0.07) 38%, transparent 66%)",
+        }} />
         <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"
-          style={{ width: "100%", height: "100%", filter: "drop-shadow(0 0 60px rgba(0,245,255,0.15)) drop-shadow(0 0 120px rgba(124,58,237,0.12))" }}>
+          style={{ width: "100%", height: "100%", position: "relative" }}>
           <defs>
             <radialGradient id="globeGrad" cx="35%" cy="35%">
               <stop offset="0%" stopColor="#1a0a3a" />
@@ -71,10 +90,6 @@ export default function Globe() {
               <stop offset="100%" stopColor="transparent" />
             </radialGradient>
             <clipPath id="globeClip"><circle cx="250" cy="250" r="210" /></clipPath>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="4" result="blur" />
-              <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-            </filter>
           </defs>
 
           <circle cx="250" cy="250" r="230" fill="none" stroke="rgba(0,245,255,0.04)" strokeWidth="40" />
@@ -107,26 +122,30 @@ export default function Globe() {
 
           <ellipse cx="195" cy="195" rx="70" ry="50" fill="rgba(255,255,255,0.03)" transform="rotate(-25 250 250)" />
 
-          <g filter="url(#glow)">
+          <g>
             {[[225,190,"#00f5ff",3,0.9],[308,215,"#00f5ff",2.5,0.7],[175,268,"#a78bfa",3,0.8],[330,295,"#00f5ff",2.5,0.6],[240,345,"#a78bfa",3,0.7]].map(([x,y,c,r,o],i) => (
-              <circle key={i} cx={x as number} cy={y as number} r={r as number} fill={c as string} opacity={o as number} />
+              <g key={i}>
+                <circle cx={x as number} cy={y as number} r={(r as number) * 2.6} fill={c as string} opacity={(o as number) * 0.18} />
+                <circle cx={x as number} cy={y as number} r={r as number} fill={c as string} opacity={o as number} />
+              </g>
             ))}
           </g>
-          <g stroke="rgba(0,245,255,0.2)" strokeWidth="1" strokeDasharray="3 4" fill="none" filter="url(#glow)">
+          <g stroke="rgba(0,245,255,0.2)" strokeWidth="1" strokeDasharray="3 4" fill="none">
             <line x1="225" y1="190" x2="308" y2="215" />
             <line x1="308" y1="215" x2="330" y2="295" />
             <line x1="175" y1="268" x2="240" y2="345" />
             <line x1="225" y1="190" x2="175" y2="268" />
           </g>
 
-          <circle ref={dot1Ref} cx="460" cy="250" r="4" fill="#00f5ff" filter="url(#glow)" opacity="0.8" />
-          <circle ref={dot2Ref} cx="40" cy="250" r="3" fill="#a78bfa" filter="url(#glow)" opacity="0.6" />
+          <circle ref={halo1Ref} cx="460" cy="250" r="10" fill="#00f5ff" opacity="0.15" />
+          <circle ref={halo2Ref} cx="40" cy="250" r="8" fill="#a78bfa" opacity="0.12" />
+          <circle ref={dot1Ref} cx="460" cy="250" r="4" fill="#00f5ff" opacity="0.8" />
+          <circle ref={dot2Ref} cx="40" cy="250" r="3" fill="#a78bfa" opacity="0.6" />
         </svg>
 
         <div style={{
           position: "absolute", bottom: "-10%", left: "10%", right: "10%", height: 40,
           background: "radial-gradient(ellipse, rgba(0,245,255,0.2) 0%, transparent 70%)",
-          filter: "blur(20px)",
         }} className="globe-float" />
       </div>
     </div>

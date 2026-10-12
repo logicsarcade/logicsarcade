@@ -39,7 +39,13 @@ export default function ParticleCanvas() {
     for (let i = 0; i < count; i++) particles.push(makeParticle());
 
     let raf = 0;
-    function draw() {
+    let last = 0;
+    const BUCKETS = 4;
+    function draw(now = 0) {
+      if (document.hidden) return;
+      raf = requestAnimationFrame(draw);
+      if (now - last < 33) return; // ~30fps is plenty for a background effect
+      last = now;
       ctx.clearRect(0, 0, W, H);
       particles.forEach((p) => {
         p.x += p.vx; p.y += p.vy;
@@ -51,28 +57,32 @@ export default function ParticleCanvas() {
         ctx.fillStyle = `rgba(${p.color},${p.alpha})`;
         ctx.fill();
       });
+      // connection lines: grouped into a few opacity buckets = a few strokes instead of hundreds
+      const paths = Array.from({ length: BUCKETS }, () => new Path2D());
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
+          if (dx > 140 || dx < -140 || dy > 140 || dy < -140) continue;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 140) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(0,245,255,${0.04 * (1 - dist / 140)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
+            const k = Math.min(BUCKETS - 1, Math.floor((1 - dist / 140) * BUCKETS));
+            paths[k].moveTo(particles[i].x, particles[i].y);
+            paths[k].lineTo(particles[j].x, particles[j].y);
           }
         }
       }
-      if (!document.hidden) raf = requestAnimationFrame(draw);
+      ctx.lineWidth = 0.5;
+      paths.forEach((path, k) => {
+        ctx.strokeStyle = `rgba(0,245,255,${0.04 * ((k + 0.5) / BUCKETS)})`;
+        ctx.stroke(path);
+      });
     }
-    const onVisible = () => { if (!document.hidden) { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); } };
+    const onVisible = () => { if (!document.hidden && !reduce) { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); } };
     document.addEventListener("visibilitychange", onVisible);
     // Start after the page has loaded, so the animation never blocks the first render
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const starter = setTimeout(() => { if (!reduce) draw(); }, 1500);
+    const starter = setTimeout(() => { if (!reduce) raf = requestAnimationFrame(draw); }, 1500);
     return () => {
       clearTimeout(starter);
       window.removeEventListener("resize", resize);
