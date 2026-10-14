@@ -8,6 +8,7 @@ import favicon32 from "../icons/favicon-32x32.png";
 import appleIcon from "../icons/apple-touch-icon.png";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"], variable: "--font-sg", display: "swap" });
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600"], variable: "--font-inter", display: "swap" });
@@ -38,6 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body>
+        <GoogleAnalytics />
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
         {children}
       </body>
