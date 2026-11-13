@@ -234,7 +234,7 @@ function Calendar({
                 aspectRatio: "1",
                 borderRadius: 8,
                 border: sel ? "1px solid var(--cyan)" : "1px solid transparent",
-                background: sel ? "rgba(0,245,255,0.12)" : "transparent",
+                background: sel ? "rgba(234,88,12,0.15)" : "transparent",
                 color: disabled ? "#333" : sel ? "var(--cyan)" : "#ccc",
                 fontSize: 13,
                 fontWeight: sel ? 600 : 400,
@@ -285,7 +285,7 @@ function TimeSlots({
                 ? "1px solid var(--cyan)"
                 : "1px solid rgba(255,255,255,0.08)",
               background: sel
-                ? "rgba(0,245,255,0.1)"
+                ? "rgba(234,88,12,0.15)"
                 : booked
                   ? "rgba(255,255,255,0.02)"
                   : "rgba(255,255,255,0.03)",
@@ -347,7 +347,7 @@ function Steps({ current, total }: { current: number; total: number }) {
                   background: done
                     ? "var(--violet)"
                     : active
-                      ? "rgba(0,245,255,0.1)"
+                      ? "rgba(234,88,12,0.15)"
                       : "transparent",
                   display: "flex",
                   alignItems: "center",
@@ -363,7 +363,7 @@ function Steps({ current, total }: { current: number; total: number }) {
               <span
                 style={{
                   fontSize: 11,
-                  color: active ? "#fff" : done ? "#a78bfa" : "#444",
+                  color: active ? "#fff" : done ? "#fb923c" : "#444",
                   letterSpacing: "0.5px",
                   whiteSpace: "nowrap",
                 }}
@@ -412,9 +412,9 @@ function OptionCard({
       onClick={onClick}
       style={{
         background: selected
-          ? "rgba(0,245,255,0.06)"
+          ? "rgba(234,88,12,0.08)"
           : "rgba(255,255,255,0.02)",
-        border: `1px solid ${selected ? "rgba(0,245,255,0.35)" : "rgba(255,255,255,0.08)"}`,
+        border: `1px solid ${selected ? "rgba(234,88,12,0.35)" : "rgba(255,255,255,0.08)"}`,
         borderRadius: 12,
         padding: "16px 14px",
         cursor: "pointer",
@@ -551,7 +551,7 @@ export default function BookingForm({
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >,
   ) => {
-    e.target.style.borderColor = "rgba(0,245,255,0.4)";
+    e.target.style.borderColor = "rgba(234,88,12,0.45)";
   };
   const inputBlur = (
     e: React.FocusEvent<
@@ -835,8 +835,8 @@ export default function BookingForm({
                 <div
                   style={{
                     marginTop: 24,
-                    background: "rgba(0,245,255,0.04)",
-                    border: "1px solid rgba(0,245,255,0.15)",
+                    background: "rgba(234,88,12,0.06)",
+                    border: "1px solid rgba(234,88,12,0.2)",
                     borderRadius: 14,
                     padding: 20,
                   }}
@@ -947,7 +947,7 @@ export default function BookingForm({
           <button
             onClick={next}
             style={{
-              background: "linear-gradient(135deg,#7c3aed,#5b21b6)",
+              background: "linear-gradient(135deg,#ea580c,#c2410c)",
               color: "#fff",
               border: "none",
               padding: "14px 36px",
@@ -955,16 +955,16 @@ export default function BookingForm({
               fontSize: 15,
               fontWeight: 600,
               cursor: "pointer",
-              boxShadow: "0 0 30px rgba(124,58,237,0.3)",
+              boxShadow: "0 0 30px rgba(234,88,12,0.35)",
               transition: "all 0.2s",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "translateY(-1px)";
-              e.currentTarget.style.boxShadow = "0 0 50px rgba(124,58,237,0.5)";
+              e.currentTarget.style.boxShadow = "0 0 50px rgba(234,88,12,0.55)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = "none";
-              e.currentTarget.style.boxShadow = "0 0 30px rgba(124,58,237,0.3)";
+              e.currentTarget.style.boxShadow = "0 0 30px rgba(234,88,12,0.35)";
             }}
           >
             Next ?
@@ -975,8 +975,8 @@ export default function BookingForm({
             disabled={isPending}
             style={{
               background: isPending
-                ? "rgba(124,58,237,0.4)"
-                : "linear-gradient(135deg,#7c3aed,#5b21b6)",
+                ? "rgba(234,88,12,0.4)"
+                : "linear-gradient(135deg,#ea580c,#c2410c)",
               color: "#fff",
               border: "none",
               padding: "14px 40px",
@@ -984,7 +984,7 @@ export default function BookingForm({
               fontSize: 15,
               fontWeight: 600,
               cursor: isPending ? "not-allowed" : "pointer",
-              boxShadow: "0 0 30px rgba(124,58,237,0.3)",
+              boxShadow: "0 0 30px rgba(234,88,12,0.35)",
               transition: "all 0.2s",
               display: "flex",
               alignItems: "center",

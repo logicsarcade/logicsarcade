@@ -38,7 +38,7 @@ export default function AdminNav({ email }: { email?: string | null }) {
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <div style={{
               width: 30, height: 30, borderRadius: "50%",
-              background: "linear-gradient(135deg,#7c3aed,#5b21b6)",
+              background: "linear-gradient(135deg,#ea580c,#c2410c)",
               display: "flex", alignItems: "center", justifyContent: "center",
               fontSize: 12, fontWeight: 700, color: "#fff",
             }}>

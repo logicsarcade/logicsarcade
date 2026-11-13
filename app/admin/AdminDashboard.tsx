@@ -37,9 +37,9 @@ const STATUS_CONFIG = {
   },
   completed: {
     label: "Completed",
-    bg: "rgba(167,139,250,0.1)",
-    border: "rgba(167,139,250,0.25)",
-    color: "#a78bfa",
+    bg: "rgba(251,146,60,0.12)",
+    border: "rgba(251,146,60,0.3)",
+    color: "#fb923c",
   },
 };
 
@@ -360,7 +360,7 @@ function Stats({ bookings }: { bookings: Booking[] }) {
         { label: "Pending", value: counts.pending, color: "#fbbf24" },
         { label: "Confirmed", value: counts.confirmed, color: "#4ade80" },
         { label: "Upcoming", value: upcoming, color: "var(--cyan)" },
-        { label: "Completed", value: counts.completed, color: "#a78bfa" },
+        { label: "Completed", value: counts.completed, color: "#fb923c" },
       ].map((s) => (
         <div
           key={s.label}
@@ -654,7 +654,7 @@ export default function AdminDashboard({
               padding: "8px 20px",
               borderRadius: 10,
               border: "none",
-              background: tab === t ? "rgba(124,58,237,0.3)" : "transparent",
+              background: tab === t ? "rgba(234,88,12,0.25)" : "transparent",
               color: tab === t ? "#fff" : "#6b6b8a",
               fontSize: 14,
               fontWeight: tab === t ? 600 : 400,
@@ -711,7 +711,7 @@ export default function AdminDashboard({
                     cursor: "pointer",
                     border: `1px solid ${filter === f ? "var(--cyan)" : "rgba(255,255,255,0.1)"}`,
                     background:
-                      filter === f ? "rgba(0,245,255,0.08)" : "transparent",
+                      filter === f ? "rgba(234,88,12,0.12)" : "transparent",
                     color: filter === f ? "var(--cyan)" : "#6b6b8a",
                     transition: "all 0.2s",
                     textTransform: "capitalize",
@@ -793,7 +793,7 @@ export default function AdminDashboard({
                     cursor: "pointer",
                     transition: "background 0.2s",
                     background: isToday
-                      ? "rgba(0,245,255,0.02)"
+                      ? "rgba(234,88,12,0.04)"
                       : "transparent",
                   }}
                   onMouseEnter={(e) =>
@@ -802,7 +802,7 @@ export default function AdminDashboard({
                   }
                   onMouseLeave={(e) =>
                     (e.currentTarget.style.background = isToday
-                      ? "rgba(0,245,255,0.02)"
+                      ? "rgba(234,88,12,0.04)"
                       : "transparent")
                   }
                   onClick={() => setSelected(b)}

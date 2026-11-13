@@ -21,7 +21,7 @@ const lbl: React.CSSProperties = {
   color: "#9090aa", marginBottom: 6, letterSpacing: "0.3px",
 };
 const foc = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-  (e.target.style.borderColor = "rgba(0,245,255,0.4)");
+  (e.target.style.borderColor = "rgba(234,88,12,0.45)");
 const blr = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
   (e.target.style.borderColor = "rgba(255,255,255,0.1)");
 
@@ -189,9 +189,9 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
               onDrop={e => { e.preventDefault(); setDragOver(false); const f = e.dataTransfer.files?.[0]; if (f) uploadImage(f); }}
               style={{
                 display: "block", marginTop: 8, padding: "14px", textAlign: "center", cursor: "pointer",
-                border: `1px dashed ${dragOver ? "rgba(0,245,255,0.6)" : "rgba(255,255,255,0.2)"}`,
+                border: `1px dashed ${dragOver ? "rgba(234,88,12,0.6)" : "rgba(255,255,255,0.2)"}`,
                 borderRadius: 10, fontSize: 12, color: "#9090aa",
-                background: dragOver ? "rgba(0,245,255,0.05)" : "transparent",
+                background: dragOver ? "rgba(234,88,12,0.08)" : "transparent",
               }}>
               {uploading ? "Uploading…" : "Drag & drop an image here, or click to upload"}
               <input type="file" accept="image/*" style={{ display: "none" }}
@@ -214,7 +214,7 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
           <label style={{ gridColumn: "span 2", display: "flex", alignItems: "center", gap: 10, cursor: "pointer", fontSize: 14, color: "var(--text)" }}>
             <input type="checkbox" checked={!!form.is_featured}
               onChange={e => set("is_featured", e.target.checked)}
-              style={{ width: 16, height: 16, accentColor: "#7c3aed", cursor: "pointer" }} />
+              style={{ width: 16, height: 16, accentColor: "#ea580c", cursor: "pointer" }} />
             Featured — show at the top of the blog page in the large layout
           </label>
         </div>
@@ -257,7 +257,7 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
             {isPending ? "Saving…" : "Save Draft"}
           </button>
           <button onClick={() => handleSave(true)} disabled={isPending}
-            style={{ background: "linear-gradient(135deg,#7c3aed,#5b21b6)", color: "#fff", border: "none", padding: "10px 28px", borderRadius: 10, fontSize: 14, fontWeight: 600, cursor: isPending ? "not-allowed" : "pointer", boxShadow: "0 0 20px rgba(124,58,237,0.3)" }}>
+            style={{ background: "linear-gradient(135deg,#ea580c,#c2410c)", color: "#fff", border: "none", padding: "10px 28px", borderRadius: 10, fontSize: 14, fontWeight: 600, cursor: isPending ? "not-allowed" : "pointer", boxShadow: "0 0 20px rgba(234,88,12,0.35)" }}>
             {isPending ? "Publishing…" : isEdit ? "Update & Publish" : "Publish"}
           </button>
         </div>

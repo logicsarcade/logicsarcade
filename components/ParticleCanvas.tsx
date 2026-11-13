@@ -32,7 +32,7 @@ export default function ParticleCanvas() {
         vy: (Math.random() - 0.5) * 0.3,
         r: Math.random() * 1.5 + 0.5,
         alpha: Math.random() * 0.4 + 0.1,
-        color: Math.random() > 0.6 ? "0,245,255" : "124,58,237",
+        color: Math.random() > 0.6 ? "249,115,22" : (Math.random() > 0.3 ? "234,88,12" : "216,216,224"),
       };
     }
     const count = window.innerWidth < 768 ? 40 : 80;
@@ -74,7 +74,7 @@ export default function ParticleCanvas() {
       }
       ctx.lineWidth = 0.5;
       paths.forEach((path, k) => {
-        ctx.strokeStyle = `rgba(0,245,255,${0.04 * ((k + 0.5) / BUCKETS)})`;
+        ctx.strokeStyle = `rgba(249,115,22,${0.05 * ((k + 0.5) / BUCKETS)})`;
         ctx.stroke(path);
       });
     }

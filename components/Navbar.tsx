@@ -105,7 +105,7 @@ export default function Navbar() {
           display: "inline-block",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.background = "#6d28d9";
+          e.currentTarget.style.background = "#c2410c";
           e.currentTarget.style.transform = "translateY(-1px)";
         }}
         onMouseLeave={(e) => {

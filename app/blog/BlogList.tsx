@@ -13,7 +13,7 @@ function BlogCard({ blog, featured }: { blog: Blog; featured?: boolean }) {
         }}
         onMouseEnter={e => {
           e.currentTarget.style.transform = "translateY(-5px)";
-          e.currentTarget.style.borderColor = "rgba(124,58,237,0.35)";
+          e.currentTarget.style.borderColor = "rgba(234,88,12,0.35)";
         }}
         onMouseLeave={e => {
           e.currentTarget.style.transform = "none";
@@ -25,7 +25,7 @@ function BlogCard({ blog, featured }: { blog: Blog; featured?: boolean }) {
           {blog.cover_image ? (
             <img src={blog.cover_image} alt={blog.title} style={{ width: "100%", display: "block" }} />
           ) : (
-            <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,rgba(124,58,237,0.15),rgba(0,245,255,0.08))" }}>
+            <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,rgba(234,88,12,0.18),rgba(249,115,22,0.08))" }}>
               <span style={{ fontSize: featured ? 64 : 48, opacity: 0.4 }}>✍️</span>
             </div>
           )}
@@ -44,7 +44,7 @@ function BlogCard({ blog, featured }: { blog: Blog; featured?: boolean }) {
           <h2 style={{ fontFamily: "var(--font-sg),sans-serif", fontSize: featured ? 26 : 18, fontWeight: 700, color: "#fff", letterSpacing: "-0.5px", lineHeight: 1.25, marginBottom: 12 }}>
             {blog.title}
             <span style={{ color: "var(--muted)", fontWeight: 400, margin: "0 8px" }}>-</span>
-            <span style={{ display: "inline-block", verticalAlign: "middle", background: "rgba(124,58,237,0.85)", color: "#fff", borderRadius: 100, padding: "4px 12px", fontSize: 11, fontWeight: 600, letterSpacing: "0.5px", fontFamily: "var(--font-inter),sans-serif", lineHeight: 1.4 }}>
+            <span style={{ display: "inline-block", verticalAlign: "middle", background: "rgba(234,88,12,0.85)", color: "#fff", borderRadius: 100, padding: "4px 12px", fontSize: 11, fontWeight: 600, letterSpacing: "0.5px", fontFamily: "var(--font-inter),sans-serif", lineHeight: 1.4 }}>
               {blog.category}
             </span>
           </h2>
@@ -56,7 +56,7 @@ function BlogCard({ blog, featured }: { blog: Blog; featured?: boolean }) {
           {blog.tags?.length > 0 && (
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 16 }}>
               {blog.tags.slice(0, 3).map(tag => (
-                <span key={tag} style={{ background: "rgba(0,245,255,0.06)", border: "1px solid rgba(0,245,255,0.12)", borderRadius: 100, padding: "2px 10px", fontSize: 11, color: "var(--cyan)" }}>
+                <span key={tag} style={{ background: "rgba(234,88,12,0.08)", border: "1px solid rgba(234,88,12,0.2)", borderRadius: 100, padding: "2px 10px", fontSize: 11, color: "var(--cyan)" }}>
                   {tag}
                 </span>
               ))}
@@ -84,7 +84,7 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
       <div style={{ marginBottom: 56 }}>
         <div style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "var(--cyan)", marginBottom: 16, fontWeight: 500 }}>Our Blog</div>
         <h1 style={{ fontFamily: "var(--font-sg),sans-serif", fontSize: "clamp(36px,5vw,60px)", fontWeight: 700, letterSpacing: "-2px", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
-          Tech Insights &<br /><span style={{ color: "#a78bfa" }}>Industry News</span>
+          Tech Insights &<br /><span style={{ color: "#fb923c" }}>Industry News</span>
         </h1>
         <p style={{ fontSize: 16, color: "var(--muted)", maxWidth: 540, lineHeight: 1.65 }}>
           Tutorials, deep-dives, and real-world lessons from the LogicsArcade engineering team.

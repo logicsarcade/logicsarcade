@@ -32,8 +32,8 @@ export default async function NotFound() {
         <div style={{
           position: "absolute", inset: 0, pointerEvents: "none",
           background: `
-            radial-gradient(ellipse 60% 50% at 65% 45%, rgba(124,58,237,0.12) 0%, transparent 60%),
-            radial-gradient(ellipse 45% 40% at 35% 55%, rgba(0,245,255,0.06) 0%, transparent 55%)
+            radial-gradient(ellipse 60% 50% at 65% 45%, rgba(234,88,12,0.14) 0%, transparent 60%),
+            radial-gradient(ellipse 45% 40% at 35% 55%, rgba(249,115,22,0.06) 0%, transparent 55%)
           `,
         }} />
         <NotFoundSearch blogs={blogs} />

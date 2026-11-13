@@ -54,7 +54,7 @@ export default function BlogManager({ blogs: initial }: { blogs: Blog[] }) {
           </h1>
         </div>
         <button onClick={() => setEditing("new")}
-          style={{ background: "linear-gradient(135deg,#7c3aed,#5b21b6)", color: "#fff", border: "none", padding: "12px 24px", borderRadius: 12, fontSize: 14, fontWeight: 600, cursor: "pointer", boxShadow: "0 0 20px rgba(124,58,237,0.3)", whiteSpace: "nowrap" }}>
+          style={{ background: "linear-gradient(135deg,#ea580c,#c2410c)", color: "#fff", border: "none", padding: "12px 24px", borderRadius: 12, fontSize: 14, fontWeight: 600, cursor: "pointer", boxShadow: "0 0 20px rgba(234,88,12,0.35)", whiteSpace: "nowrap" }}>
           + New Post
         </button>
       </div>
@@ -98,7 +98,7 @@ export default function BlogManager({ blogs: initial }: { blogs: Blog[] }) {
 
             {/* Category */}
             <div>
-              <span style={{ background: "rgba(124,58,237,0.12)", border: "1px solid rgba(124,58,237,0.2)", borderRadius: 100, padding: "3px 10px", fontSize: 11, color: "#a78bfa" }}>{b.category}</span>
+              <span style={{ background: "rgba(234,88,12,0.12)", border: "1px solid rgba(234,88,12,0.25)", borderRadius: 100, padding: "3px 10px", fontSize: 11, color: "#fb923c" }}>{b.category}</span>
             </div>
 
             {/* Date */}

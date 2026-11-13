@@ -5,6 +5,7 @@ import type { Project } from "@/types/database";
 // Live links for known projects (matched by name)
 function projectLink(name: string) {
   const n = name.toLowerCase();
+  if (n.includes("outbox")) return "https://outbox.logicsarcade.com/";
   if (n.includes("minewords")) return "https://minewords.com/";
   if (n.includes("arcade shipping calculator")) return "https://apps.shopify.com/shipping-cost-calculator";
   return "#";
@@ -12,13 +13,13 @@ function projectLink(name: string) {
 
 // ─── Mock screen rendered inside each project card ───────────
 function MockScreen({ accent }: { accent: string }) {
-  const color = accent === "cyan" ? "0,245,255" : "124,58,237";
+  const color = accent === "cyan" ? "249,115,22" : "234,88,12";
   return (
     <div
       style={{
         width: "85%",
         height: "80%",
-        background: "#0a0a1a",
+        background: "#0c0c0e",
         borderRadius: 8,
         border: "1px solid rgba(255,255,255,0.06)",
         display: "flex",
@@ -30,7 +31,7 @@ function MockScreen({ accent }: { accent: string }) {
       <div
         style={{
           height: 28,
-          background: "#111125",
+          background: "#141418",
           borderBottom: "1px solid rgba(255,255,255,0.04)",
           display: "flex",
           alignItems: "center",
@@ -95,7 +96,7 @@ function MockScreen({ accent }: { accent: string }) {
                 flex: 1,
                 height: `${h}%`,
                 borderRadius: "4px 4px 0 0",
-                background: `rgba(${i > 5 ? "124,58,237" : color},${0.2 + (h / 100) * 0.2})`,
+                background: `rgba(${i > 5 ? "234,88,12" : color},${0.2 + (h / 100) * 0.2})`,
               }}
             />
           ))}
@@ -123,7 +124,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = "translateY(-6px)";
-        e.currentTarget.style.borderColor = "rgba(0,245,255,0.2)";
+        e.currentTarget.style.borderColor = "rgba(234,88,12,0.35)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "none";
@@ -218,12 +219,12 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
                 <span
                   key={t}
                   style={{
-                    background: "rgba(124,58,237,0.12)",
-                    border: "1px solid rgba(124,58,237,0.2)",
+                    background: "rgba(234,88,12,0.12)",
+                    border: "1px solid rgba(234,88,12,0.25)",
                     borderRadius: 100,
                     padding: "3px 10px",
                     fontSize: 11,
-                    color: "#a78bfa",
+                    color: "#fb923c",
                   }}
                 >
                   {t}
@@ -293,7 +294,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
               color: "#fff",
             }}
           >
-            Products that <span style={{ color: "#a78bfa" }}>ship</span>
+            Products that <span style={{ color: "#fb923c" }}>ship</span>
           </h2>
         </div>
 

@@ -14,8 +14,8 @@ export default function Hero() {
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
         background: `
-          radial-gradient(ellipse 80% 60% at 70% 50%, rgba(124,58,237,0.12) 0%, transparent 60%),
-          radial-gradient(ellipse 50% 40% at 30% 50%, rgba(0,245,255,0.06) 0%, transparent 55%)
+          radial-gradient(ellipse 80% 60% at 70% 50%, rgba(234,88,12,0.12) 0%, transparent 60%),
+          radial-gradient(ellipse 50% 40% at 30% 50%, rgba(249,115,22,0.06) 0%, transparent 55%)
         `,
       }} />
 
@@ -24,7 +24,7 @@ export default function Hero() {
         {/* Eyebrow */}
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 10,
-          background: "rgba(0,245,255,0.05)", border: "1px solid rgba(0,245,255,0.15)",
+          background: "rgba(234,88,12,0.08)", border: "1px solid rgba(234,88,12,0.25)",
           borderRadius: 100, padding: "6px 16px",
           fontSize: 12, letterSpacing: 2, textTransform: "uppercase", color: "var(--cyan)",
           marginBottom: 32,
@@ -40,7 +40,7 @@ export default function Hero() {
         }}>
           Building <span style={{ color: "var(--cyan)" }}>Scalable</span><br />
           Web & Mobile<br />
-          <span style={{ color: "#a78bfa" }}>Apps</span>
+          <span style={{ color: "#fb923c" }}>Apps</span>
         </h1>
 
         <p style={{ fontSize: 16, color: "var(--muted)", lineHeight: 1.7, marginBottom: 20 }}>
@@ -60,14 +60,14 @@ export default function Hero() {
         <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
           <a href="/book" style={{
             display: "inline-flex", alignItems: "center", gap: 8,
-            background: "linear-gradient(135deg, var(--violet) 0%, #5b21b6 100%)",
+            background: "linear-gradient(135deg, #ea580c 0%, #c2410c 100%)",
             color: "#fff", padding: "14px 32px", borderRadius: 100,
             fontSize: 15, fontWeight: 600, textDecoration: "none",
-            boxShadow: "0 0 40px rgba(124,58,237,0.3)",
+            boxShadow: "0 0 40px rgba(234,88,12,0.35)",
             transition: "transform 0.2s, box-shadow 0.3s",
           }}
-            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 0 60px rgba(124,58,237,0.5)"; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 0 40px rgba(124,58,237,0.3)"; }}>
+            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 0 60px rgba(234,88,12,0.55)"; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 0 40px rgba(234,88,12,0.35)"; }}>
             📞 Book a Call
           </a>
           <a href="#work" style={{

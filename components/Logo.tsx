@@ -22,7 +22,7 @@ const Logo = () => {
       <span
         style={{
           color: "transparent",
-          background: "linear-gradient(90deg, var(--violet), var(--cyan))",
+          background: "linear-gradient(90deg, #ea580c, #f97316)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",

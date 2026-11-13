@@ -134,7 +134,7 @@ export default function TermsPage() {
       <Navbar />
 
       <main style={{ minHeight: "100vh", paddingTop: 100, paddingBottom: 80, position: "relative", zIndex: 1 }}>
-        <div style={{ position: "fixed", top: "20%", right: "-10%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle,rgba(124,58,237,0.06) 0%,transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ position: "fixed", top: "20%", right: "-10%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle,rgba(234,88,12,0.08) 0%,transparent 70%)", pointerEvents: "none" }} />
 
         <div style={{ maxWidth: 780, margin: "0 auto", padding: "0 40px" }}>
           {/* Breadcrumb */}
@@ -146,7 +146,7 @@ export default function TermsPage() {
 
           {/* Header */}
           <div style={{ marginBottom: 52 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(124,58,237,0.08)", border: "1px solid rgba(124,58,237,0.2)", borderRadius: 100, padding: "6px 16px", fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: "#a78bfa", marginBottom: 24 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(234,88,12,0.1)", border: "1px solid rgba(234,88,12,0.25)", borderRadius: 100, padding: "6px 16px", fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: "#fb923c", marginBottom: 24 }}>
               Legal
             </div>
             <h1 style={{ fontFamily: "var(--font-sg),sans-serif", fontSize: "clamp(32px,5vw,52px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff", marginBottom: 16 }}>
@@ -186,13 +186,13 @@ export default function TermsPage() {
           </div>
 
           {/* CTA */}
-          <div style={{ marginTop: 56, background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.15)", borderRadius: 16, padding: "28px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+          <div style={{ marginTop: 56, background: "rgba(234,88,12,0.06)", border: "1px solid rgba(234,88,12,0.18)", borderRadius: 16, padding: "28px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
             <div>
               <div style={{ fontSize: 15, fontWeight: 600, color: "#fff", marginBottom: 4 }}>Questions about our terms?</div>
               <div style={{ fontSize: 13, color: "var(--muted)" }}>Get in touch — we&apos;re straightforward to work with.</div>
             </div>
             <Link href="/book"
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "linear-gradient(135deg,var(--violet),#5b21b6)", color: "#fff", padding: "10px 24px", borderRadius: 100, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "linear-gradient(135deg,#ea580c,#c2410c)", color: "#fff", padding: "10px 24px", borderRadius: 100, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
               Book a Call
             </Link>
           </div>

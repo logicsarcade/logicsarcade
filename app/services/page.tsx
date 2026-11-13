@@ -33,7 +33,7 @@ export default function ServicesPage() {
 
           <div style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "var(--cyan)", marginBottom: 16, fontWeight: 500 }}>What We Build</div>
           <h1 style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(34px,5vw,60px)", fontWeight: 700, letterSpacing: "-2px", lineHeight: 1.08, color: "#fff", maxWidth: 760 }}>
-            Services built to help your business <span style={{ color: "#a78bfa" }}>grow</span>
+            Services built to help your business <span style={{ color: "#fb923c" }}>grow</span>
           </h1>
           <p style={{ color: "var(--muted)", fontSize: 17, lineHeight: 1.7, maxWidth: 620, marginTop: 20 }}>
             From the first idea to launch and beyond, our team covers design, development, cloud, and search visibility, so you can work with one partner for the whole journey.
@@ -63,7 +63,7 @@ export default function ServicesPage() {
           {/* CTA */}
           <div style={{
             margin: "110px 0 120px", textAlign: "center", padding: "56px 24px", borderRadius: 28,
-            background: "linear-gradient(135deg, rgba(124,58,237,0.14), rgba(0,245,255,0.04))",
+            background: "linear-gradient(135deg, rgba(234,88,12,0.16), rgba(249,115,22,0.05))",
             border: "1px solid var(--glass-border)",
           }}>
             <h2 style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(26px,3.2vw,40px)", fontWeight: 700, letterSpacing: "-1px", color: "#fff" }}>Not sure which service you need?</h2>

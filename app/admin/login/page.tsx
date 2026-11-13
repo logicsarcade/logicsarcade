@@ -49,7 +49,7 @@ export default async function LoginPage({
             height: 300,
             pointerEvents: "none",
             background:
-              "radial-gradient(ellipse, rgba(124,58,237,0.12) 0%, transparent 70%)",
+              "radial-gradient(ellipse, rgba(234,88,12,0.15) 0%, transparent 70%)",
           }}
         />
         <div
@@ -61,7 +61,7 @@ export default async function LoginPage({
             height: 300,
             pointerEvents: "none",
             background:
-              "radial-gradient(circle, rgba(0,245,255,0.05) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%)",
           }}
         />
 
@@ -110,8 +110,8 @@ export default async function LoginPage({
                 width: 52,
                 height: 52,
                 borderRadius: 14,
-                background: "rgba(124,58,237,0.12)",
-                border: "1px solid rgba(124,58,237,0.25)",
+                background: "rgba(234,88,12,0.12)",
+                border: "1px solid rgba(234,88,12,0.25)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -161,8 +161,8 @@ export default async function LoginPage({
           {/* Setup hint */}
           {/* <div style={{
             marginTop: 24,
-            background: "rgba(0,245,255,0.04)",
-            border: "1px solid rgba(0,245,255,0.1)",
+            background: "rgba(234,88,12,0.06)",
+            border: "1px solid rgba(234,88,12,0.18)",
             borderRadius: 12, padding: "14px 16px",
           }}>
             <div style={{ fontSize: 11, color: "var(--cyan)", fontWeight: 600, marginBottom: 6, letterSpacing: "0.5px" }}>

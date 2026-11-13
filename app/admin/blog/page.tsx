@@ -16,7 +16,7 @@ export default async function AdminBlogPage() {
       <ParticleCanvas />
 
       <main style={{ minHeight: "100vh", paddingTop: 90, paddingBottom: 80, position: "relative", zIndex: 1 }}>
-        <div style={{ position: "fixed", top: "30%", right: "-5%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle,rgba(124,58,237,0.06) 0%,transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ position: "fixed", top: "30%", right: "-5%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle,rgba(234,88,12,0.08) 0%,transparent 70%)", pointerEvents: "none" }} />
         <BlogManager blogs={blogs} />
       </main>
     </>

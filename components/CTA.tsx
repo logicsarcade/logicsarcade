@@ -15,7 +15,7 @@ export default function CTA() {
         zIndex: 1,
       }}
     >
-      {/* violet radial glow */}
+      {/* orange radial glow */}
       <div
         style={{
           position: "absolute",
@@ -26,7 +26,7 @@ export default function CTA() {
           height: 300,
           pointerEvents: "none",
           background:
-            "radial-gradient(ellipse, rgba(124,58,237,0.15) 0%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(234,88,12,0.18) 0%, transparent 70%)",
         }}
       />
 
@@ -65,7 +65,7 @@ export default function CTA() {
         >
           Let&apos;s build something
           <br />
-          <span style={{ color: "#a78bfa" }}>amazing</span> together
+          <span style={{ color: "#fb923c" }}>amazing</span> together
         </h2>
         <p style={{ fontSize: 16, color: "var(--muted)", marginBottom: 48 }}>
           Free 30-minute strategy call. No commitment, just clarity.
@@ -85,23 +85,23 @@ export default function CTA() {
               alignItems: "center",
               gap: 8,
               background:
-                "linear-gradient(135deg, var(--violet) 0%, #5b21b6 100%)",
+                "linear-gradient(135deg, #ea580c 0%, #c2410c 100%)",
               color: "#fff",
               padding: "14px 32px",
               borderRadius: 100,
               fontSize: 15,
               fontWeight: 600,
               textDecoration: "none",
-              boxShadow: "0 0 40px rgba(124,58,237,0.3)",
+              boxShadow: "0 0 40px rgba(234,88,12,0.35)",
               transition: "transform 0.2s, box-shadow 0.3s",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow = "0 0 60px rgba(124,58,237,0.5)";
+              e.currentTarget.style.boxShadow = "0 0 60px rgba(234,88,12,0.55)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = "none";
-              e.currentTarget.style.boxShadow = "0 0 40px rgba(124,58,237,0.3)";
+              e.currentTarget.style.boxShadow = "0 0 40px rgba(234,88,12,0.35)";
             }}
           >
             📞 Book Free Call

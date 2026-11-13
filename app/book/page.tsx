@@ -43,7 +43,7 @@ export default async function BookPage() {
             height: 500,
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(234,88,12,0.1) 0%, transparent 70%)",
             pointerEvents: "none",
           }}
         />
@@ -56,7 +56,7 @@ export default async function BookPage() {
             height: 400,
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(0,245,255,0.05) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%)",
             pointerEvents: "none",
           }}
         />
@@ -95,8 +95,8 @@ export default async function BookPage() {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 8,
-                    background: "rgba(0,245,255,0.05)",
-                    border: "1px solid rgba(0,245,255,0.15)",
+                    background: "rgba(234,88,12,0.08)",
+                    border: "1px solid rgba(234,88,12,0.25)",
                     borderRadius: 100,
                     padding: "6px 16px",
                     fontSize: 12,
@@ -131,7 +131,7 @@ export default async function BookPage() {
                 >
                   Let&apos;s talk about
                   <br />
-                  <span style={{ color: "#a78bfa" }}>your project</span>
+                  <span style={{ color: "#fb923c" }}>your project</span>
                 </h1>
                 <p
                   style={{

@@ -75,34 +75,34 @@ export default function Globe() {
       <div className="globe-float" style={{ width: "100%", height: "100%", position: "relative" }}>
         <div style={{
           position: "absolute", inset: "-22%", pointerEvents: "none",
-          background: "radial-gradient(circle, rgba(124,58,237,0.13) 0%, rgba(0,245,255,0.07) 38%, transparent 66%)",
+          background: "radial-gradient(circle, rgba(234,88,12,0.13) 0%, rgba(249,115,22,0.07) 38%, transparent 66%)",
         }} />
         <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"
           style={{ width: "100%", height: "100%", position: "relative" }}>
           <defs>
             <radialGradient id="globeGrad" cx="35%" cy="35%">
-              <stop offset="0%" stopColor="#1a0a3a" />
-              <stop offset="100%" stopColor="#050508" />
+              <stop offset="0%" stopColor="#1c120c" />
+              <stop offset="100%" stopColor="#070708" />
             </radialGradient>
             <radialGradient id="glowGrad" cx="35%" cy="35%">
-              <stop offset="0%" stopColor="rgba(0,245,255,0.15)" />
-              <stop offset="60%" stopColor="rgba(124,58,237,0.05)" />
+              <stop offset="0%" stopColor="rgba(249,115,22,0.18)" />
+              <stop offset="60%" stopColor="rgba(234,88,12,0.06)" />
               <stop offset="100%" stopColor="transparent" />
             </radialGradient>
             <clipPath id="globeClip"><circle cx="250" cy="250" r="210" /></clipPath>
           </defs>
 
-          <circle cx="250" cy="250" r="230" fill="none" stroke="rgba(0,245,255,0.04)" strokeWidth="40" />
-          <circle cx="250" cy="250" r="218" fill="none" stroke="rgba(0,245,255,0.06)" strokeWidth="2" />
+          <circle cx="250" cy="250" r="230" fill="none" stroke="rgba(249,115,22,0.04)" strokeWidth="40" />
+          <circle cx="250" cy="250" r="218" fill="none" stroke="rgba(249,115,22,0.06)" strokeWidth="2" />
           <circle cx="250" cy="250" r="210" fill="url(#globeGrad)" />
           <circle cx="250" cy="250" r="210" fill="url(#glowGrad)" />
 
-          <g clipPath="url(#globeClip)" stroke="rgba(0,245,255,0.12)" strokeWidth="1" fill="none">
+          <g clipPath="url(#globeClip)" stroke="rgba(249,115,22,0.12)" strokeWidth="1" fill="none">
             {[210, 175, 120, 60, 15].map(rx => (
               <ellipse key={rx} cx="250" cy="250" rx={rx} ry="210" />
             ))}
           </g>
-          <g clipPath="url(#globeClip)" stroke="rgba(0,245,255,0.1)" strokeWidth="1" fill="none">
+          <g clipPath="url(#globeClip)" stroke="rgba(249,115,22,0.1)" strokeWidth="1" fill="none">
             <ellipse cx="250" cy="250" rx="210" ry="60" />
             <ellipse cx="250" cy="190" rx="200" ry="45" />
             <ellipse cx="250" cy="310" rx="200" ry="45" />
@@ -112,7 +112,7 @@ export default function Globe() {
             <ellipse cx="250" cy="420" rx="110" ry="18" />
           </g>
 
-          <g clipPath="url(#globeClip)" fill="rgba(124,58,237,0.2)" stroke="rgba(124,58,237,0.3)" strokeWidth="0.5">
+          <g clipPath="url(#globeClip)" fill="rgba(234,88,12,0.2)" stroke="rgba(234,88,12,0.35)" strokeWidth="0.5">
             <path d="M180 160 Q210 140 240 155 Q265 165 270 185 Q275 205 260 215 Q240 225 215 215 Q190 205 180 185 Z" />
             <path d="M280 200 Q310 185 335 195 Q350 205 345 225 Q335 240 310 240 Q290 230 280 215 Z" />
             <path d="M150 250 Q175 235 205 245 Q225 255 225 275 Q220 295 195 300 Q165 295 148 278 Z" />
@@ -123,29 +123,29 @@ export default function Globe() {
           <ellipse cx="195" cy="195" rx="70" ry="50" fill="rgba(255,255,255,0.03)" transform="rotate(-25 250 250)" />
 
           <g>
-            {[[225,190,"#00f5ff",3,0.9],[308,215,"#00f5ff",2.5,0.7],[175,268,"#a78bfa",3,0.8],[330,295,"#00f5ff",2.5,0.6],[240,345,"#a78bfa",3,0.7]].map(([x,y,c,r,o],i) => (
+            {[[225,190,"#f97316",3,0.9],[308,215,"#f97316",2.5,0.7],[175,268,"#fb923c",3,0.8],[330,295,"#f97316",2.5,0.6],[240,345,"#fb923c",3,0.7]].map(([x,y,c,r,o],i) => (
               <g key={i}>
                 <circle cx={x as number} cy={y as number} r={(r as number) * 2.6} fill={c as string} opacity={(o as number) * 0.18} />
                 <circle cx={x as number} cy={y as number} r={r as number} fill={c as string} opacity={o as number} />
               </g>
             ))}
           </g>
-          <g stroke="rgba(0,245,255,0.2)" strokeWidth="1" strokeDasharray="3 4" fill="none">
+          <g stroke="rgba(249,115,22,0.25)" strokeWidth="1" strokeDasharray="3 4" fill="none">
             <line x1="225" y1="190" x2="308" y2="215" />
             <line x1="308" y1="215" x2="330" y2="295" />
             <line x1="175" y1="268" x2="240" y2="345" />
             <line x1="225" y1="190" x2="175" y2="268" />
           </g>
 
-          <circle ref={halo1Ref} cx="460" cy="250" r="10" fill="#00f5ff" opacity="0.15" />
-          <circle ref={halo2Ref} cx="40" cy="250" r="8" fill="#a78bfa" opacity="0.12" />
-          <circle ref={dot1Ref} cx="460" cy="250" r="4" fill="#00f5ff" opacity="0.8" />
-          <circle ref={dot2Ref} cx="40" cy="250" r="3" fill="#a78bfa" opacity="0.6" />
+          <circle ref={halo1Ref} cx="460" cy="250" r="10" fill="#f97316" opacity="0.15" />
+          <circle ref={halo2Ref} cx="40" cy="250" r="8" fill="#fb923c" opacity="0.12" />
+          <circle ref={dot1Ref} cx="460" cy="250" r="4" fill="#f97316" opacity="0.8" />
+          <circle ref={dot2Ref} cx="40" cy="250" r="3" fill="#fb923c" opacity="0.6" />
         </svg>
 
         <div style={{
           position: "absolute", bottom: "-10%", left: "10%", right: "10%", height: 40,
-          background: "radial-gradient(ellipse, rgba(0,245,255,0.2) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(234,88,12,0.25) 0%, transparent 70%)",
         }} className="globe-float" />
       </div>
     </div>

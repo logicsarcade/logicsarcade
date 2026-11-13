@@ -14,11 +14,11 @@ function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; del
         borderRadius: 20, padding: 36, position: "relative", overflow: "hidden",
         backdropFilter: "blur(10px)", transition: "border-color 0.3s, transform 0.3s",
       }}
-      onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(124,58,237,0.3)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
+      onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(234,88,12,0.35)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
       onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--glass-border)"; e.currentTarget.style.transform = "none"; }}
     >
       {/* decorative quote mark */}
-      <div style={{ position: "absolute", top: -10, right: 24, fontSize: 120, fontFamily: "Georgia, serif", color: "rgba(124,58,237,0.08)", lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>
+      <div style={{ position: "absolute", top: -10, right: 24, fontSize: 120, fontFamily: "Georgia, serif", color: "rgba(234,88,12,0.08)", lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>
         &ldquo;
       </div>
 
@@ -66,7 +66,7 @@ export default function Testimonials({ testimonials }: { testimonials: Testimoni
             Client Feedback
           </div>
           <h2 style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff" }}>
-            Trusted by <span style={{ color: "#a78bfa" }}>founders</span>
+            Trusted by <span style={{ color: "#fb923c" }}>founders</span>
           </h2>
         </div>
 

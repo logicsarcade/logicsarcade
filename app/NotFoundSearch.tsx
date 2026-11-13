@@ -110,9 +110,9 @@ export default function NotFoundSearch({ blogs }: { blogs: SearchBlog[] }) {
       <div className="nf-404" style={{
         fontFamily: "var(--font-sg), sans-serif", fontWeight: 700,
         fontSize: "clamp(96px, 22vw, 190px)", lineHeight: 1, letterSpacing: "-6px",
-        background: "linear-gradient(135deg, var(--cyan) 0%, var(--violet) 100%)",
+        background: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
         WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent",
-        filter: "drop-shadow(0 0 40px rgba(124,58,237,0.25))",
+        filter: "drop-shadow(0 0 40px rgba(234,88,12,0.35))",
       }}>404</div>
 
       <h1 style={{
@@ -130,8 +130,8 @@ export default function NotFoundSearch({ blogs }: { blogs: SearchBlog[] }) {
         <div style={{
           display: "flex", alignItems: "center", gap: 12, padding: "0 20px",
           background: "var(--glass)", borderRadius: 100,
-          border: `1px solid ${focused ? "rgba(124,58,237,0.7)" : "var(--glass-border)"}`,
-          boxShadow: focused ? "0 0 0 4px rgba(124,58,237,0.15), 0 0 40px rgba(124,58,237,0.15)" : "none",
+          border: `1px solid ${focused ? "rgba(234,88,12,0.7)" : "var(--glass-border)"}`,
+          boxShadow: focused ? "0 0 0 4px rgba(234,88,12,0.15), 0 0 40px rgba(234,88,12,0.2)" : "none",
           transition: "border-color 0.25s, box-shadow 0.25s",
         }}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={focused ? "var(--cyan)" : "var(--muted)"} strokeWidth="2" strokeLinecap="round" style={{ flexShrink: 0, transition: "stroke 0.25s" }} aria-hidden>
@@ -179,8 +179,8 @@ export default function NotFoundSearch({ blogs }: { blogs: SearchBlog[] }) {
                 onMouseDown={e => e.preventDefault()}
                 style={{
                   display: "block", textDecoration: "none", padding: "12px 14px", borderRadius: 14,
-                  background: i === active ? "rgba(124,58,237,0.14)" : "transparent",
-                  border: `1px solid ${i === active ? "rgba(124,58,237,0.35)" : "transparent"}`,
+                  background: i === active ? "rgba(234,88,12,0.14)" : "transparent",
+                  border: `1px solid ${i === active ? "rgba(234,88,12,0.35)" : "transparent"}`,
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
@@ -208,14 +208,14 @@ export default function NotFoundSearch({ blogs }: { blogs: SearchBlog[] }) {
       <div>
         <Link href="/" className="nf-home" style={{
           display: "inline-flex", alignItems: "center", gap: 8,
-          background: "linear-gradient(135deg, var(--violet) 0%, #5b21b6 100%)",
+          background: "linear-gradient(135deg, #ea580c 0%, #c2410c 100%)",
           color: "#fff", padding: "14px 32px", borderRadius: 100,
           fontSize: 15, fontWeight: 600, textDecoration: "none",
-          boxShadow: "0 0 40px rgba(124,58,237,0.3)",
+          boxShadow: "0 0 40px rgba(234,88,12,0.35)",
           transition: "transform 0.2s, box-shadow 0.3s",
         }}
-          onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 0 60px rgba(124,58,237,0.5)"; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 0 40px rgba(124,58,237,0.3)"; }}>
+          onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 0 60px rgba(234,88,12,0.55)"; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 0 40px rgba(234,88,12,0.35)"; }}>
           ← Go to Home
         </Link>
       </div>

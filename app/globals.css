@@ -1,11 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --black: #050508;
-  --navy: #080818;
-  --cyan: #00f5ff;
-  --violet: #7c3aed;
-  --violet-dim: #4c1d95;
+  --black: #070708;
+  --navy: #0e0e11;
+  --cyan: #ea580c;
+  --violet: #ea580c;
+  --violet-dim: #9a3412;
+  --orange: #ea580c;
+  --orange-bright: #f97316;
+  --silver: #d4d4d8;
   --glass: rgba(255,255,255,0.04);
   --glass-border: rgba(255,255,255,0.08);
   --text: #e8e8f0;
@@ -26,14 +29,14 @@ body {
 
 .cursor {
   position: fixed; width: 12px; height: 12px;
-  background: var(--cyan); border-radius: 50%;
+  background: var(--orange-bright); border-radius: 50%;
   pointer-events: none; z-index: 9999;
   transition: transform 0.1s ease;
   mix-blend-mode: screen;
 }
 .cursor-ring {
   position: fixed; width: 40px; height: 40px;
-  border: 1px solid rgba(0,245,255,0.3); border-radius: 50%;
+  border: 1px solid rgba(249,115,22,0.35); border-radius: 50%;
   pointer-events: none; z-index: 9998;
   transition: left 0.12s ease, top 0.12s ease, width 0.3s, height 0.3s;
 }
@@ -76,18 +79,18 @@ body {
 
 /* Services pages */
 .svc-card { display: block; text-decoration: none; background: var(--navy); border: 1px solid var(--glass-border); border-radius: 20px; padding: 32px 30px; transition: transform .25s, border-color .25s, background .25s; }
-.svc-card:hover { transform: translateY(-4px); border-color: rgba(124,58,237,0.45); background: #0d0d20; }
+.svc-card:hover { transform: translateY(-4px); border-color: rgba(234,88,12,0.45); background: #141316; }
 .svc-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 30px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; transition: transform .2s, box-shadow .3s, border-color .2s; }
-.svc-btn-primary { background: linear-gradient(135deg, var(--violet) 0%, #5b21b6 100%); color: #fff; box-shadow: 0 0 40px rgba(124,58,237,0.3); }
-.svc-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(124,58,237,0.5); }
+.svc-btn-primary { background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%); color: #fff; box-shadow: 0 0 40px rgba(234,88,12,0.35); }
+.svc-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(234,88,12,0.55); }
 .svc-btn-ghost { color: #fff; border: 1px solid var(--glass-border); background: var(--glass); }
-.svc-btn-ghost:hover { border-color: rgba(124,58,237,0.5); transform: translateY(-2px); }
+.svc-btn-ghost:hover { border-color: rgba(234,88,12,0.5); transform: translateY(-2px); }
 .svc-faq { border: 1px solid var(--glass-border); border-radius: 16px; background: var(--glass); padding: 0 24px; }
 .svc-faq summary { cursor: pointer; padding: 20px 0; font-weight: 600; color: #fff; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
 .svc-faq summary::-webkit-details-marker { display: none; }
 .svc-faq summary::after { content: "+"; color: var(--cyan); font-size: 20px; line-height: 1; transition: transform .2s; }
 .svc-faq[open] summary::after { transform: rotate(45deg); }
-.svc-chip { padding: 8px 16px; border-radius: 100px; font-size: 13px; color: #a78bfa; background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25); }
+.svc-chip { padding: 8px 16px; border-radius: 100px; font-size: 13px; color: #fb923c; background: rgba(234,88,12,0.1); border: 1px solid rgba(234,88,12,0.25); }
 .svc-wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 60px); position: relative; z-index: 1; }
 
 /* Footer: three equal-width columns, logo centred */

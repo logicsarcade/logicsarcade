@@ -61,7 +61,7 @@ export default async function ConfirmationPage({
         <div style={{
           position: "fixed", top: "30%", left: "50%", transform: "translate(-50%,-50%)",
           width: 600, height: 300,
-          background: "radial-gradient(ellipse, rgba(124,58,237,0.12) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(234,88,12,0.15) 0%, transparent 70%)",
           pointerEvents: "none",
         }} />
 
@@ -89,7 +89,7 @@ export default async function ConfirmationPage({
             color: "#fff", marginBottom: 16,
           }}>
             You&apos;re all set,<br />
-            <span style={{ color: "#a78bfa" }}>{booking.full_name.split(" ")[0]}!</span>
+            <span style={{ color: "#fb923c" }}>{booking.full_name.split(" ")[0]}!</span>
           </h1>
           <p style={{ fontSize: 16, color: "#6b6b8a", lineHeight: 1.65, marginBottom: 48 }}>
             We&apos;ve received your booking and will send a confirmation to{" "}
@@ -150,7 +150,7 @@ export default async function ConfirmationPage({
                 { step: "3", text: "We jump on a 30-min call � no pitch, just honest advice" },
               ].map(item => (
                 <div key={item.step} style={{ display: "flex", alignItems: "flex-start", gap: 14, textAlign: "left", background: "rgba(255,255,255,0.02)", borderRadius: 12, padding: "14px 16px" }}>
-                  <div style={{ width: 24, height: 24, borderRadius: "50%", background: "rgba(124,58,237,0.2)", border: "1px solid rgba(124,58,237,0.3)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, color: "#a78bfa", flexShrink: 0 }}>
+                  <div style={{ width: 24, height: 24, borderRadius: "50%", background: "rgba(234,88,12,0.15)", border: "1px solid rgba(234,88,12,0.3)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, color: "#fb923c", flexShrink: 0 }}>
                     {item.step}
                   </div>
                   <span style={{ fontSize: 14, color: "#9090aa", lineHeight: 1.5 }}>{item.text}</span>
@@ -163,10 +163,10 @@ export default async function ConfirmationPage({
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/" style={{
               display: "inline-flex", alignItems: "center", gap: 8,
-              background: "linear-gradient(135deg,#7c3aed,#5b21b6)",
+              background: "linear-gradient(135deg,#ea580c,#c2410c)",
               color: "#fff", padding: "14px 32px", borderRadius: 100,
               fontSize: 15, fontWeight: 600, textDecoration: "none",
-              boxShadow: "0 0 30px rgba(124,58,237,0.3)",
+              boxShadow: "0 0 30px rgba(234,88,12,0.35)",
             }}>
               ? Back to Home
             </Link>

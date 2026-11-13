@@ -81,7 +81,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <Navbar />
 
       <main style={{ minHeight: "100vh", paddingTop: 100, paddingBottom: 80, position: "relative", zIndex: 1 }}>
-        <div style={{ position: "fixed", top: "20%", right: "-10%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle,rgba(124,58,237,0.06) 0%,transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ position: "fixed", top: "20%", right: "-10%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle,rgba(234,88,12,0.08) 0%,transparent 70%)", pointerEvents: "none" }} />
 
         <div style={{ maxWidth: 760, margin: "0 auto", padding: "0 40px" }}>
           {/* Breadcrumb */}
@@ -95,11 +95,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           {/* Category + tags */}
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 20 }}>
-            <span style={{ background: "rgba(124,58,237,0.15)", border: "1px solid rgba(124,58,237,0.3)", color: "#a78bfa", borderRadius: 100, padding: "4px 14px", fontSize: 12, fontWeight: 600 }}>
+            <span style={{ background: "rgba(234,88,12,0.15)", border: "1px solid rgba(234,88,12,0.3)", color: "#fb923c", borderRadius: 100, padding: "4px 14px", fontSize: 12, fontWeight: 600 }}>
               {blog.category}
             </span>
             {blog.tags?.map(tag => (
-              <span key={tag} style={{ background: "rgba(0,245,255,0.05)", border: "1px solid rgba(0,245,255,0.12)", color: "var(--cyan)", borderRadius: 100, padding: "4px 12px", fontSize: 12 }}>
+              <span key={tag} style={{ background: "rgba(234,88,12,0.08)", border: "1px solid rgba(234,88,12,0.2)", color: "var(--cyan)", borderRadius: 100, padding: "4px 12px", fontSize: 12 }}>
                 {tag}
               </span>
             ))}
@@ -113,7 +113,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {/* Meta */}
           <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 36, flexWrap: "wrap" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <div style={{ width: 32, height: 32, borderRadius: "50%", background: "linear-gradient(135deg,#7c3aed,#5b21b6)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: "#fff" }}>
+              <div style={{ width: 32, height: 32, borderRadius: "50%", background: "linear-gradient(135deg,#ea580c,#c2410c)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: "#fff" }}>
                 {blog.author_name[0]}
               </div>
               <span style={{ fontSize: 13, color: "#ccc" }}>{blog.author_name}</span>
@@ -132,7 +132,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           )}
 
           {/* Excerpt */}
-          <div style={{ marginBottom: 40, padding: "20px 24px", background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.15)", borderRadius: 14, borderLeft: "3px solid var(--violet)" }}>
+          <div style={{ marginBottom: 40, padding: "20px 24px", background: "rgba(234,88,12,0.06)", border: "1px solid rgba(234,88,12,0.18)", borderRadius: 14, borderLeft: "3px solid var(--violet)" }}>
             <p style={{ fontSize: 16, color: "#ccc", lineHeight: 1.7, fontStyle: "italic" }}>{blog.excerpt}</p>
           </div>
 
@@ -160,7 +160,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 {related.map(r => (
                   <Link key={r.id} href={`/blog/${r.slug}`} style={{ textDecoration: "none" }}>
                     <div className="related-card" style={{ background: "var(--glass)", border: "1px solid var(--glass-border)", borderRadius: 14, padding: "18px 20px", transition: "all 0.2s" }}>
-                      <div style={{ fontSize: 11, color: "#a78bfa", marginBottom: 8 }}>{r.category}</div>
+                      <div style={{ fontSize: 11, color: "#fb923c", marginBottom: 8 }}>{r.category}</div>
                       <div style={{ fontSize: 14, fontWeight: 600, color: "#fff", lineHeight: 1.3, marginBottom: 8 }}>{r.title}</div>
                       <div style={{ fontSize: 11, color: "#6b6b8a" }}>{r.read_time} min read</div>
                     </div>
@@ -174,7 +174,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       {/* Blog content styles */}
       <style>{`
-        .related-card:hover{border-color:rgba(124,58,237,0.3) !important}
+        .related-card:hover{border-color:rgba(234,88,12,0.35) !important}
         .blog-content h1,.blog-content h2,.blog-content h3,.blog-content h4 {
           font-family:var(--font-sg),sans-serif; color:#fff;
           letter-spacing:-0.5px; margin:2em 0 0.75em; line-height:1.2;
@@ -182,16 +182,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         .blog-content h1{font-size:2rem} .blog-content h2{font-size:1.6rem}
         .blog-content h3{font-size:1.25rem} .blog-content h4{font-size:1.05rem}
         .blog-content p{margin:0 0 1.25em;color:var(--text)}
-        .blog-content a{color:var(--cyan);text-decoration:underline;text-decoration-color:rgba(0,245,255,0.3)}
+        .blog-content a{color:var(--cyan);text-decoration:underline;text-decoration-color:rgba(234,88,12,0.35)}
         .blog-content a:hover{text-decoration-color:var(--cyan)}
         .blog-content strong,.blog-content b{color:#fff;font-weight:600}
         .blog-content em,.blog-content i{font-style:italic;color:#ccc}
         .blog-content code{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-radius:5px;padding:2px 7px;font-size:0.88em;font-family:monospace;color:var(--cyan)}
-        .blog-content pre{background:#0a0a16;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;overflow-x:auto;margin:1.5em 0}
+        .blog-content pre{background:#0c0c0e;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;overflow-x:auto;margin:1.5em 0}
         .blog-content pre code{background:none;border:none;padding:0;font-size:0.9em;color:#e8e8f0}
         .blog-content ul,.blog-content ol{margin:0 0 1.25em 1.5em;color:var(--text)}
         .blog-content li{margin-bottom:0.4em;line-height:1.7}
-        .blog-content blockquote{border-left:3px solid var(--violet);margin:1.5em 0;padding:12px 20px;background:rgba(124,58,237,0.06);border-radius:0 10px 10px 0}
+        .blog-content blockquote{border-left:3px solid var(--violet);margin:1.5em 0;padding:12px 20px;background:rgba(234,88,12,0.06);border-radius:0 10px 10px 0}
         .blog-content blockquote p{color:#ccc;font-style:italic;margin:0}
         .blog-content img{max-width:100%;border-radius:12px;margin:1.5em 0;border:1px solid var(--glass-border)}
         .blog-content hr{border:none;border-top:1px solid var(--glass-border);margin:2em 0}

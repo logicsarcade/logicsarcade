@@ -76,7 +76,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
           {/* Hero */}
           <div style={{
-            width: 64, height: 64, background: "rgba(0,245,255,0.06)", border: "1px solid rgba(0,245,255,0.12)",
+            width: 64, height: 64, background: "rgba(234,88,12,0.08)", border: "1px solid rgba(234,88,12,0.2)",
             borderRadius: 18, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24, fontSize: 28,
           }}>{s.icon}</div>
           <h1 style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(34px,5vw,58px)", fontWeight: 700, letterSpacing: "-2px", lineHeight: 1.08, color: "#fff", maxWidth: 800 }}>{s.name}</h1>
@@ -163,7 +163,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           {/* CTA */}
           <div style={{
             margin: "96px 0 0", textAlign: "center", padding: "56px 24px", borderRadius: 28,
-            background: "linear-gradient(135deg, rgba(124,58,237,0.14), rgba(0,245,255,0.04))",
+            background: "linear-gradient(135deg, rgba(234,88,12,0.16), rgba(249,115,22,0.05))",
             border: "1px solid var(--glass-border)",
           }}>
             <h2 style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(26px,3.2vw,40px)", fontWeight: 700, letterSpacing: "-1px", color: "#fff" }}>Ready to talk about {s.name}?</h2>

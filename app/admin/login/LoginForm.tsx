@@ -33,7 +33,7 @@ export default function LoginForm({ redirectTo }: { redirectTo: string }) {
   };
 
   const focus = (e: React.FocusEvent<HTMLInputElement>) =>
-    (e.target.style.borderColor = "rgba(0,245,255,0.4)");
+    (e.target.style.borderColor = "rgba(234,88,12,0.45)");
   const blur = (e: React.FocusEvent<HTMLInputElement>) =>
     (e.target.style.borderColor = "rgba(255,255,255,0.1)");
 
@@ -110,13 +110,13 @@ export default function LoginForm({ redirectTo }: { redirectTo: string }) {
         style={{
           width: "100%",
           background: isPending
-            ? "rgba(124,58,237,0.4)"
-            : "linear-gradient(135deg,#7c3aed,#5b21b6)",
+            ? "rgba(234,88,12,0.4)"
+            : "linear-gradient(135deg,#ea580c,#c2410c)",
           color: "#fff", border: "none",
           padding: "15px 32px", borderRadius: 12,
           fontSize: 15, fontWeight: 600,
           cursor: isPending ? "not-allowed" : "pointer",
-          boxShadow: isPending ? "none" : "0 0 30px rgba(124,58,237,0.3)",
+          boxShadow: isPending ? "none" : "0 0 30px rgba(234,88,12,0.35)",
           transition: "all 0.2s",
           display: "flex", alignItems: "center", justifyContent: "center", gap: 10,
           marginTop: 4,
@@ -124,12 +124,12 @@ export default function LoginForm({ redirectTo }: { redirectTo: string }) {
         onMouseEnter={e => {
           if (!isPending) {
             e.currentTarget.style.transform = "translateY(-1px)";
-            e.currentTarget.style.boxShadow = "0 0 50px rgba(124,58,237,0.5)";
+            e.currentTarget.style.boxShadow = "0 0 50px rgba(234,88,12,0.55)";
           }
         }}
         onMouseLeave={e => {
           e.currentTarget.style.transform = "none";
-          e.currentTarget.style.boxShadow = isPending ? "none" : "0 0 30px rgba(124,58,237,0.3)";
+          e.currentTarget.style.boxShadow = isPending ? "none" : "0 0 30px rgba(234,88,12,0.35)";
         }}
       >
         {isPending ? (

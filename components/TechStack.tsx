@@ -2,7 +2,7 @@
 import { useReveal } from "./useReveal";
 
 const STACK = [
-  { label: "Next.js", color: "#00f5ff" },
+  { label: "Next.js", color: "#ea580c" },
   { label: "React", color: "#61dafb" },
   { label: "Node.js", color: "#339933" },
   { label: "MongoDB", color: "#47A248" },
@@ -10,7 +10,7 @@ const STACK = [
   { label: "React Native", color: "#00d2ff" },
   { label: "Shopify", color: "#96bf48" },
   { label: "Tailwind CSS", color: "#38bdf8" },
-  { label: "Framer Motion", color: "#a78bfa" },
+  { label: "Framer Motion", color: "#fb923c" },
   { label: "Three.js", color: "#ff6b6b" },
   { label: "GSAP", color: "#88CE02" },
   { label: "AWS", color: "#FF9900" },

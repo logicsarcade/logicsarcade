@@ -19,7 +19,7 @@ export default function Process() {
             How We Work
           </div>
           <h2 style={{ fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, color: "#fff" }}>
-            From idea to <span style={{ color: "#a78bfa" }}>launch</span>
+            From idea to <span style={{ color: "#fb923c" }}>launch</span>
           </h2>
         </div>
 
@@ -45,7 +45,7 @@ function Step({ num, title, desc, delay }: { num: string; title: string; desc: s
       style={{ padding: "0 24px", textAlign: "center", position: "relative" }}
       onMouseEnter={e => {
         const circle = e.currentTarget.querySelector(".step-circle") as HTMLElement;
-        if (circle) { circle.style.borderColor = "var(--cyan)"; circle.style.background = "rgba(0,245,255,0.04)"; circle.style.color = "var(--cyan)"; }
+        if (circle) { circle.style.borderColor = "var(--cyan)"; circle.style.background = "rgba(234,88,12,0.08)"; circle.style.color = "var(--cyan)"; }
       }}
       onMouseLeave={e => {
         const circle = e.currentTarget.querySelector(".step-circle") as HTMLElement;
