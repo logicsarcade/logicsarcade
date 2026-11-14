@@ -12,9 +12,9 @@ export default function Process() {
   const headerRef = useReveal();
 
   return (
-    <section id="process" style={{ padding: "120px 0", position: "relative", zIndex: 1 }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 60px" }}>
-        <div ref={headerRef} className="reveal" style={{ marginBottom: 80 }}>
+    <section id="process" style={{ padding: "clamp(60px, 10vw, 120px) 0", position: "relative", zIndex: 1 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 clamp(16px, 5vw, 60px)" }}>
+        <div ref={headerRef} className="reveal" style={{ marginBottom: "clamp(40px, 7vw, 80px)" }}>
           <div style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "var(--cyan)", marginBottom: 16, fontWeight: 500 }}>
             How We Work
           </div>
@@ -23,12 +23,9 @@ export default function Process() {
           </h2>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", position: "relative" }}>
+        <div className="process-grid">
           {/* connecting line */}
-          <div style={{
-            position: "absolute", top: 36, left: "12.5%", right: "12.5%", height: 1,
-            background: "linear-gradient(to right, transparent, var(--glass-border) 20%, var(--glass-border) 80%, transparent)",
-          }} />
+          <div className="process-connector" />
           {STEPS.map((s, i) => <Step key={s.num} {...s} delay={i + 1} />)}
         </div>
       </div>

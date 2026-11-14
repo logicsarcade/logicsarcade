@@ -147,16 +147,16 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
         </div>
 
         {/* Form grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 20 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: 20, marginBottom: 20 }}>
           {/* Title */}
-          <div style={{ gridColumn: "span 2" }}>
+          <div style={{ gridColumn: "1 / -1" }}>
             <label style={lbl}>Title *</label>
             <input value={form.title} onChange={e => handleTitleChange(e.target.value)} onFocus={foc} onBlur={blr}
               placeholder="e.g. Why Next.js 15 Changes Everything" style={inp} />
           </div>
 
           {/* Slug */}
-          <div style={{ gridColumn: "span 2" }}>
+          <div style={{ gridColumn: "1 / -1" }}>
             <label style={lbl}>Slug (URL) — optional, auto-generated from title if empty</label>
             <input value={form.slug} onChange={e => set("slug", e.target.value)} onFocus={foc} onBlur={blr}
               placeholder="Leave empty to generate automatically" style={{ ...inp, fontFamily: "monospace", fontSize: 13 }} />
@@ -204,14 +204,14 @@ export default function BlogEditor({ blog, onClose, onSaved }: Props) {
           </div>
 
           {/* Tags */}
-          <div style={{ gridColumn: "span 2" }}>
+          <div style={{ gridColumn: "1 / -1" }}>
             <label style={lbl}>Tags (comma separated)</label>
             <input value={tagsInput} onChange={e => setTagsInput(e.target.value)}
               onFocus={foc} onBlur={blr} placeholder="Next.js, React, Performance" style={inp} />
           </div>
 
           {/* Featured */}
-          <label style={{ gridColumn: "span 2", display: "flex", alignItems: "center", gap: 10, cursor: "pointer", fontSize: 14, color: "var(--text)" }}>
+          <label style={{ gridColumn: "1 / -1", display: "flex", alignItems: "center", gap: 10, cursor: "pointer", fontSize: 14, color: "var(--text)" }}>
             <input type="checkbox" checked={!!form.is_featured}
               onChange={e => set("is_featured", e.target.checked)}
               style={{ width: 16, height: 16, accentColor: "#ea580c", cursor: "pointer" }} />

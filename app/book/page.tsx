@@ -61,11 +61,11 @@ export default async function BookPage() {
           }}
         />
 
-        <div style={{ maxWidth: "90%", margin: "0 auto", padding: "0 40px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 clamp(16px, 4vw, 40px)" }}>
           {/* Breadcrumb */}
           <div
             style={{
-              marginBottom: 48,
+              marginBottom: 36,
               display: "flex",
               alignItems: "center",
               gap: 8,
@@ -80,16 +80,10 @@ export default async function BookPage() {
             <span style={{ color: "var(--cyan)" }}>Book a Call</span>
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              gap: 80,
-              flexDirection: "row",
-            }}
-          >
-            <div>
+          <div className="book-split">
+            <div style={{ flex: "1 1 auto", maxWidth: 520 }}>
               {/* Page header */}
-              <div style={{ marginBottom: 60 }}>
+              <div style={{ marginBottom: 40 }}>
                 <div
                   style={{
                     display: "inline-flex",
@@ -182,8 +176,10 @@ export default async function BookPage() {
                 background: "rgba(255,255,255,0.02)",
                 border: "1px solid rgba(255,255,255,0.07)",
                 borderRadius: 24,
-                padding: "48px 56px",
+                padding: "clamp(24px, 4vw, 48px) clamp(16px, 4vw, 48px)",
                 backdropFilter: "blur(10px)",
+                width: "100%",
+                maxWidth: 620,
               }}
             >
               <BookingForm blockedDates={blockedDates} />

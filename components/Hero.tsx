@@ -8,7 +8,8 @@ export default function Hero() {
     <section id="hero" style={{
       position: "relative", zIndex: 1,
       minHeight: "100vh", display: "flex", alignItems: "center",
-      padding: "0 60px", overflow: "hidden",
+      padding: "clamp(100px, 15vh, 140px) clamp(16px, 5vw, 60px) clamp(50px, 8vh, 80px)",
+      overflow: "hidden",
     }}>
       {/* Background gradients */}
       <div style={{
@@ -34,8 +35,8 @@ export default function Hero() {
         </div>
 
         <h1 style={{
-          fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(42px, 5.5vw, 72px)",
-          fontWeight: 700, lineHeight: 1.05, letterSpacing: "-2px",
+          fontFamily: "var(--font-sg), sans-serif", fontSize: "clamp(34px, 5.5vw, 72px)",
+          fontWeight: 700, lineHeight: 1.05, letterSpacing: "-1.5px",
           marginBottom: 24, color: "#fff",
         }}>
           Building <span style={{ color: "var(--cyan)" }}>Scalable</span><br />

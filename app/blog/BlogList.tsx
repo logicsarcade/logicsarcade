@@ -79,7 +79,7 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
   const rest = blogs.filter(b => !b.is_featured);
 
   return (
-    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 40px" }}>
+    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 clamp(16px, 4vw, 40px)" }}>
       {/* Header */}
       <div style={{ marginBottom: 56 }}>
         <div style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "var(--cyan)", marginBottom: 16, fontWeight: 500 }}>Our Blog</div>
@@ -105,7 +105,7 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
       ))}
 
       {rest.length > 0 && (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(320px,1fr))", gap: 24 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 300px), 1fr))", gap: 24 }}>
           {rest.map(b => <BlogCard key={b.id} blog={b} />)}
         </div>
       )}

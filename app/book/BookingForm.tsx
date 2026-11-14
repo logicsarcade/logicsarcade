@@ -263,7 +263,7 @@ function TimeSlots({
 }) {
   return (
     <div
-      style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 8 }}
+      style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 75px), 1fr))", gap: 8 }}
     >
       {TIME_SLOTS.map((slot) => {
         const booked = bookedSlots.includes(slot);
@@ -585,7 +585,7 @@ export default function BookingForm({
           </p>
 
           <div
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}
+            style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: 16 }}
           >
             <div style={S.field}>
               <label style={S.label}>Full Name *</label>
@@ -664,7 +664,7 @@ export default function BookingForm({
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(3,1fr)",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 140px), 1fr))",
                 gap: 10,
               }}
             >
@@ -686,7 +686,7 @@ export default function BookingForm({
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(4,1fr)",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 120px), 1fr))",
                 gap: 10,
               }}
             >
@@ -708,7 +708,7 @@ export default function BookingForm({
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(4,1fr)",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 120px), 1fr))",
                 gap: 10,
               }}
             >
@@ -762,7 +762,7 @@ export default function BookingForm({
           </p>
 
           <div
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}
+            style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 28 }}
           >
             <div>
               <label style={{ ...S.label, marginBottom: 12 }}>

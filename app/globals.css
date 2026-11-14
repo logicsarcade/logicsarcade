@@ -104,3 +104,230 @@ body {
   .site-footer-center { order: 1; }
   .site-footer-right { order: 3; justify-content: center; }
 }
+
+/* ─── Admin Layout System ────────────────────────────────── */
+.admin-root {
+  display: flex;
+  min-height: 100vh;
+  background: #070708;
+  color: #fff;
+  position: relative;
+  width: 100%;
+}
+
+.admin-main-container {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #070708;
+  transition: margin-left 0.22s cubic-bezier(0.4, 0, 0.2, 1), width 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-sidebar-fixed {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100vh;
+  background: #09090c;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 50;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: width 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 1024px) {
+  .admin-desktop-header {
+    display: flex !important;
+  }
+  .admin-sidebar-fixed {
+    display: flex !important;
+  }
+  .admin-mobile-header {
+    display: none !important;
+  }
+  .admin-mobile-drawer {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .admin-desktop-header {
+    display: none !important;
+  }
+  .admin-sidebar-fixed {
+    display: none !important;
+  }
+  .admin-main-container {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  .admin-mobile-header {
+    display: flex !important;
+  }
+}
+
+.admin-stats-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+@media (max-width: 1200px) {
+  .admin-stats-grid-5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .admin-stats-grid-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .admin-stats-grid-5 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-stats-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+@media (max-width: 768px) {
+  .admin-stats-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Main Site Navbar Responsive Helpers ───────────────── */
+.nav-desktop-links {
+  display: flex !important;
+  gap: clamp(20px, 3vw, 40px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+.nav-desktop-btn {
+  display: flex !important;
+  align-items: center;
+}
+.nav-mobile-btn {
+  display: none !important;
+  align-items: center;
+  gap: 12px;
+}
+.nav-mobile-drawer {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .nav-desktop-links {
+    display: none !important;
+  }
+  .nav-desktop-btn {
+    display: none !important;
+  }
+  .nav-mobile-btn {
+    display: flex !important;
+  }
+  .nav-mobile-drawer {
+    display: flex !important;
+  }
+}
+
+/* ─── Homepage Responsive Sections ──────────────────────── */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--glass-border);
+}
+.svc-explore-card {
+  grid-column: span 2;
+  display: flex;
+  text-decoration: none;
+  background: var(--navy);
+}
+@media (max-width: 1023px) {
+  .svc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .svc-grid {
+    grid-template-columns: 1fr;
+  }
+  .svc-explore-card {
+    grid-column: span 1;
+  }
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+.process-connector {
+  position: absolute;
+  top: 36px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--glass-border) 20%, var(--glass-border) 80%, transparent);
+}
+@media (max-width: 1023px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 16px;
+  }
+  .process-connector {
+    display: none !important;
+  }
+}
+@media (max-width: 600px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 36px 0;
+  }
+}
+
+.book-split {
+  display: flex;
+  flex-direction: row;
+  gap: 56px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+@media (max-width: 1023px) {
+  .book-split {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+
+
+

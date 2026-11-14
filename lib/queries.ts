@@ -18,7 +18,22 @@ export async function getProjects(): Promise<Project[]> {
     return [];
   }
 
-  return data ?? [];
+  return (data ?? []).map((row: any) => {
+    let link_url = row.link_url;
+    let description = row.description;
+    if (!link_url && description) {
+      const match = description.match(/<!--link:(.*?)-->/);
+      if (match) {
+        link_url = match[1]?.trim() || null;
+        description = description.replace(/<!--link:(.*?)-->/g, "").trim();
+      }
+    }
+    return {
+      ...row,
+      description,
+      link_url: link_url || null,
+    };
+  });
 }
 
 /**

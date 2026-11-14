@@ -9,10 +9,11 @@ export default function CTA() {
     <section
       id="contact"
       style={{
-        padding: "80px 0",
+        padding: "clamp(60px, 8vw, 100px) 0",
         textAlign: "center",
         position: "relative",
         zIndex: 1,
+        overflow: "hidden",
       }}
     >
       {/* orange radial glow */}
@@ -22,7 +23,7 @@ export default function CTA() {
           top: "50%",
           left: "50%",
           transform: "translate(-50%,-50%)",
-          width: 600,
+          width: "min(600px, 90vw)",
           height: 300,
           pointerEvents: "none",
           background:
@@ -38,7 +39,7 @@ export default function CTA() {
           zIndex: 2,
           maxWidth: 1200,
           margin: "0 auto",
-          padding: "0 60px",
+          padding: "0 clamp(16px, 5vw, 60px)",
         }}
       >
         <div

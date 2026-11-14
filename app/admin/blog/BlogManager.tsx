@@ -44,9 +44,9 @@ export default function BlogManager({ blogs: initial }: { blogs: Blog[] }) {
   const drafts = blogs.filter(b => !b.is_published).length;
 
   return (
-    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 40px" }}>
+    <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 clamp(16px, 3vw, 40px)" }}>
       {/* Header */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 36 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 16, marginBottom: 36 }}>
         <div>
           <div style={{ fontSize: 11, letterSpacing: 3, color: "var(--cyan)", textTransform: "uppercase", marginBottom: 10 }}>Content</div>
           <h1 style={{ fontFamily: "var(--font-sg),sans-serif", fontSize: "clamp(26px,3vw,38px)", fontWeight: 700, letterSpacing: "-1px", color: "#fff" }}>
@@ -60,7 +60,7 @@ export default function BlogManager({ blogs: initial }: { blogs: Blog[] }) {
       </div>
 
       {/* Stats */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, marginBottom: 36 }}>
+      <div className="admin-stats-grid-3">
         {[{ label: "Total Posts", value: blogs.length, color: "#fff" }, { label: "Published", value: published, color: "#4ade80" }, { label: "Drafts", value: drafts, color: "#fbbf24" }].map(s => (
           <div key={s.label} style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 14, padding: "20px 24px" }}>
             <div style={{ fontSize: 28, fontWeight: 700, fontFamily: "var(--font-sg),sans-serif", color: s.color }}>{s.value}</div>
@@ -71,8 +71,10 @@ export default function BlogManager({ blogs: initial }: { blogs: Blog[] }) {
 
       {/* Table */}
       <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 16, overflow: "hidden" }}>
-        {/* Table head */}
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 100px 100px 180px", padding: "12px 24px", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
+        <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+          <div style={{ minWidth: 700 }}>
+            {/* Table head */}
+            <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 100px 100px 180px", padding: "12px 24px", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
           {["Post", "Category", "Date", "Status", "Actions"].map(h => (
             <div key={h} style={{ fontSize: 11, color: "#6b6b8a", fontWeight: 500, letterSpacing: "0.5px", textTransform: "uppercase" }}>{h}</div>
           ))}
@@ -135,6 +137,8 @@ export default function BlogManager({ blogs: initial }: { blogs: Blog[] }) {
             </div>
           </div>
         ))}
+          </div>
+        </div>
       </div>
 
       {/* Editor modal */}

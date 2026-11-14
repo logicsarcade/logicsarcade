@@ -139,7 +139,7 @@ function BookingModal({
           background: "#0d0d1a",
           border: "1px solid rgba(255,255,255,0.1)",
           borderRadius: 20,
-          padding: 40,
+          padding: "clamp(20px, 4vw, 40px)",
           width: "min(640px,90vw)",
           maxHeight: "85vh",
           overflowY: "auto",
@@ -197,8 +197,8 @@ function BookingModal({
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "16px 32px",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))",
+            gap: "16px 24px",
             marginBottom: 28,
           }}
         >
@@ -347,14 +347,7 @@ function Stats({ bookings }: { bookings: Booking[] }) {
   ).length;
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(5,1fr)",
-        gap: 16,
-        marginBottom: 40,
-      }}
-    >
+    <div className="admin-stats-grid-5">
       {[
         { label: "Total", value: bookings.length, color: "#fff" },
         { label: "Pending", value: counts.pending, color: "#fbbf24" },
@@ -605,7 +598,7 @@ export default function AdminDashboard({
   };
 
   return (
-    <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 40px" }}>
+    <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 clamp(16px, 3vw, 40px)" }}>
       {/* Header */}
       <div style={{ marginBottom: 40 }}>
         <div
@@ -732,17 +725,19 @@ export default function AdminDashboard({
               overflow: "hidden",
             }}
           >
-            {/* Table header */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1.8fr 1.5fr 1fr 1fr 1fr 80px",
-                gap: 0,
-                padding: "12px 24px",
-                borderBottom: "1px solid rgba(255,255,255,0.06)",
-                background: "rgba(255,255,255,0.02)",
-              }}
-            >
+            <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+              <div style={{ minWidth: 740 }}>
+                {/* Table header */}
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1.8fr 1.5fr 1fr 1fr 1fr 80px",
+                    gap: 0,
+                    padding: "12px 24px",
+                    borderBottom: "1px solid rgba(255,255,255,0.06)",
+                    background: "rgba(255,255,255,0.02)",
+                  }}
+                >
               {["Client", "Date & Time", "Service", "Budget", "Status", ""].map(
                 (h) => (
                   <div
@@ -871,6 +866,8 @@ export default function AdminDashboard({
                 </div>
               );
             })}
+              </div>
+            </div>
           </div>
 
           {filtered.length > 0 && (

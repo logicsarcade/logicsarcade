@@ -1,6 +1,6 @@
 import { getSession } from "./actions";
 import type { Metadata } from "next";
-import AdminNav from "./AdminNav";
+import AdminSidebar from "./AdminSidebar";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
@@ -8,9 +8,8 @@ export const metadata: Metadata = { robots: { index: false, follow: false } };
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const user = await getSession();
   return (
-    <>
-      <AdminNav email={user?.email} />
+    <AdminSidebar email={user?.email}>
       {children}
-    </>
+    </AdminSidebar>
   );
 }

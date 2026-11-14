@@ -136,7 +136,7 @@ export default function TermsPage() {
       <main style={{ minHeight: "100vh", paddingTop: 100, paddingBottom: 80, position: "relative", zIndex: 1 }}>
         <div style={{ position: "fixed", top: "20%", right: "-10%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle,rgba(234,88,12,0.08) 0%,transparent 70%)", pointerEvents: "none" }} />
 
-        <div style={{ maxWidth: 780, margin: "0 auto", padding: "0 40px" }}>
+        <div style={{ maxWidth: 780, margin: "0 auto", padding: "0 clamp(16px, 4vw, 40px)" }}>
           {/* Breadcrumb */}
           <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "#6b6b8a", marginBottom: 40 }}>
             <Link href="/" style={{ color: "#6b6b8a", textDecoration: "none" }}>Home</Link>

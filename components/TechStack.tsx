@@ -20,8 +20,8 @@ export default function TechStack() {
   const ref = useReveal();
 
   return (
-    <section id="stack" style={{ padding: "80px 0", position: "relative", zIndex: 1, borderTop: "1px solid var(--glass-border)" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 60px" }}>
+    <section id="stack" style={{ padding: "clamp(50px, 8vw, 80px) 0", position: "relative", zIndex: 1, borderTop: "1px solid var(--glass-border)" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 clamp(16px, 5vw, 60px)" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "var(--cyan)", fontWeight: 500 }}>
             Technologies We Master

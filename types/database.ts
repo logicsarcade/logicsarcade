@@ -13,6 +13,7 @@ export interface Project {
   featured: boolean;
   sort_order: number;
   image_url: string | null;
+  link_url?: string | null;
 }
 
 export interface Testimonial {

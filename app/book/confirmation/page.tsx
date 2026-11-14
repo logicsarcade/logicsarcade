@@ -65,7 +65,7 @@ export default async function ConfirmationPage({
           pointerEvents: "none",
         }} />
 
-        <div style={{ maxWidth: 680, margin: "0 auto", padding: "0 40px", textAlign: "center" }}>
+        <div style={{ maxWidth: 680, margin: "0 auto", padding: "0 clamp(16px, 4vw, 40px)", textAlign: "center" }}>
 
           {/* Success icon */}
           <div style={{
@@ -101,14 +101,14 @@ export default async function ConfirmationPage({
           <div style={{
             background: "rgba(255,255,255,0.02)",
             border: "1px solid rgba(255,255,255,0.08)",
-            borderRadius: 20, padding: "36px 40px",
+            borderRadius: 20, padding: "clamp(24px, 4vw, 36px) clamp(16px, 4vw, 40px)",
             textAlign: "left", marginBottom: 40,
           }}>
             <div style={{ fontSize: 12, letterSpacing: 2, textTransform: "uppercase", color: "var(--cyan)", marginBottom: 24 }}>
               Booking Summary
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px 32px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: "20px 28px" }}>
               {[
                 { icon: "??", label: "Name",     value: booking.full_name },
                 { icon: "??", label: "Email",    value: booking.email },

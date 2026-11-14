@@ -2,9 +2,12 @@
 import { useReveal } from "./useReveal";
 import type { Project } from "@/types/database";
 
-// Live links for known projects (matched by name)
-function projectLink(name: string) {
-  const n = name.toLowerCase();
+// Live links for projects (prioritizing project.link_url, with fallback for known defaults)
+function projectLink(project: Project): string {
+  if (project.link_url && project.link_url.trim()) {
+    return project.link_url.trim();
+  }
+  const n = (project.name || "").toLowerCase();
   if (n.includes("outbox")) return "https://outbox.logicsarcade.com/";
   if (n.includes("minewords")) return "https://minewords.com/";
   if (n.includes("arcade shipping calculator")) return "https://apps.shopify.com/shipping-cost-calculator";
@@ -109,6 +112,9 @@ function MockScreen({ accent }: { accent: string }) {
 // ─── Single project card ─────────────────────────────────────
 function ProjectCard({ project, delay }: { project: Project; delay: number }) {
   const ref = useReveal();
+  const link = projectLink(project);
+  const hasLink = link !== "#";
+
   return (
     <div
       ref={ref}
@@ -119,12 +125,14 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
         border: "1px solid var(--glass-border)",
         borderRadius: 20,
         overflow: "hidden",
-        cursor: "pointer",
+        cursor: hasLink ? "pointer" : "default",
         transition: "transform 0.3s, border-color 0.3s",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-6px)";
-        e.currentTarget.style.borderColor = "rgba(234,88,12,0.35)";
+        if (hasLink) {
+          e.currentTarget.style.transform = "translateY(-6px)";
+          e.currentTarget.style.borderColor = "rgba(234,88,12,0.35)";
+        }
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "none";
@@ -133,9 +141,9 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
     >
       <a
         key={project.id}
-        href={projectLink(project.name)}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={hasLink ? link : undefined}
+        target={hasLink ? "_blank" : undefined}
+        rel={hasLink ? "noopener noreferrer" : undefined}
         style={{ textDecoration: "none" }}
       >
         {/* Image or mock screen */}
@@ -171,7 +179,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
         </div>
 
         {/* Body */}
-        <div style={{ padding: "28px 32px" }}>
+        <div style={{ padding: "clamp(20px, 3.5vw, 28px) clamp(16px, 3.5vw, 32px)" }}>
           <div
             style={{
               fontSize: 11,
@@ -191,9 +199,25 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
               color: "#fff",
               letterSpacing: "-0.5px",
               marginBottom: 10,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 8,
             }}
           >
-            {project.name}
+            <span>{project.name}</span>
+            {hasLink && (
+              <span
+                style={{
+                  fontSize: 16,
+                  color: "#ea580c",
+                  opacity: 0.85,
+                }}
+                title="Open live project"
+              >
+                ↗
+              </span>
+            )}
           </div>
           <div
             style={{
@@ -268,10 +292,10 @@ export default function Projects({ projects }: { projects: Project[] }) {
   return (
     <section
       id="work"
-      style={{ padding: "120px 0", position: "relative", zIndex: 1 }}
+      style={{ padding: "clamp(60px, 10vw, 120px) 0", position: "relative", zIndex: 1 }}
     >
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 60px" }}>
-        <div ref={headerRef} className="reveal" style={{ marginBottom: 64 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 clamp(16px, 5vw, 60px)" }}>
+        <div ref={headerRef} className="reveal" style={{ marginBottom: "clamp(36px, 6vw, 64px)" }}>
           <div
             style={{
               fontSize: 11,
@@ -298,13 +322,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
           </h2>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2,1fr)",
-            gap: 24,
-          }}
-        >
+        <div className="projects-grid">
           {projects.map((p, i) => (
             <ProjectCard key={p.id} project={p} delay={i} />
           ))}
