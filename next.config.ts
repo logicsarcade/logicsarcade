@@ -6,9 +6,6 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [{ source: "/favicon.ico", destination: "/api/favicon" }];
   },
-  experimental: {
-    inlineCss: true, // inline CSS into the HTML: removes the render-blocking stylesheet request
-  },
 };
 
 export default nextConfig;
